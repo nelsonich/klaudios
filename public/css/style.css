@@ -1,0 +1,107 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f3f6f9;
+}
+
+:focus {
+    outline: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+img.logo {
+    width: 40%;
+}
+
+
+/* About Us */
+
+div.aboutSection div.aboutImage {
+    background-image: url('../images/about.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+}
+
+
+/* Features */
+
+div.featuresSection {
+    min-height: 500px;
+}
+
+div.featuresSection img.artMan {
+    position: absolute;
+    bottom: 0;
+    width: 25%;
+}
+
+div.featuresSection div.oblako {
+    background-image: url(../images/oblako.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 340px;
+    width: 50%;
+    margin: auto;
+}
+
+div.oblako span {
+    position: absolute;
+    top: 170px;
+    left: 220px;
+    font-size: 35px;
+}
+
+
+/* Contact Us */
+
+div.contactSection {
+    background-color: #e9edf1;
+    padding: 10px;
+}
+
+div.contactSection ul li {
+    margin: 5px;
+}
+
+div.contactSection form.requestQuote label,
+div.contactSection form.requestQuote input,
+div.contactSection form.requestQuote textarea {
+    width: 100%;
+}
+
+div.contactSection form.requestQuote input,
+div.contactSection form.requestQuote textarea {
+    border: 1px solid;
+    padding: 2px 10px;
+    border-radius: 5px;
+    resize: none;
+}
+
+div.contactSection form.requestQuote input[type='submit']:hover {
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.contactSocSites {
+    display: flex;
+}
+
+
+/* Footer */
+
+footer {
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+}

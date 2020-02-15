@@ -1,0 +1,42 @@
+div#loginForm {
+    padding: 4rem 0;
+}
+
+div#loginForm .card .card-header,
+div#registrationForm .card .card-header {
+    text-align: center;
+    font-size: -webkit-xxx-large;
+}
+
+div#loginForm div.card,
+div#registrationForm div.card {
+    background: #e28585;
+    width: 70%;
+    margin: auto;
+    color: #3a4a54;
+}
+
+div#loginForm form i,
+div#registrationForm form i {
+    font-size: 25px;
+}
+
+div#loginForm form a,
+div#registrationForm form a {
+    color: #3a4a54;
+}
+
+div#loginForm form button,
+div#registrationForm form button {
+    background-color: #e8a348;
+}
+
+@media screen and (max-width: 1000px) {
+    div#loginForm div.card,
+    div#registrationForm div.card {
+        width: 100%;
+    }
+    div#loginForm {
+        padding: 4rem 2rem;
+    }
+}
