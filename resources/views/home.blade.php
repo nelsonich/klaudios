@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Klaudios | Profile')
 
 @section('content')
 <div class="container">
@@ -19,5 +20,8 @@
             </div>
         </div>
     </div>
+
+    {{-- News --}}
+    @include('news.news')
 </div>
 @endsection

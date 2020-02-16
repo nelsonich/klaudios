@@ -1,0 +1,18 @@
+<div class="row text-center title">
+    <h1>Lorem, ipsum dolor.</h1>
+</div>
+
+@foreach ($news as $item)
+    <div class="row news py-2 m-2">
+        <div class="col-md-3">
+            <img src="{{ asset('images/news/' . $item->image) }}" alt="{{ $item->title }}" class="img-fluid" />
+        </div>
+        <div class="col-md-7 py-5">
+            <h2 title="{{ $item->title }}">{{ $item->title }}</h2>
+            <p>{!! \App\Helpers\TextLimit::limit($item->description) !!}</p>
+        </div>
+        <div class="col-md-2">
+            <a href="{{ url('home/item', [$item->id]) }}" class="btn btn-sm btn-info">Read More</a>
+        </div>
+    </div>
+@endforeach

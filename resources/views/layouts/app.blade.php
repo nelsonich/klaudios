@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('css/default/scrollBar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login_and_reg.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/news/news.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/socButtons.css') }}">
 </head>
 <body>
     <div id="app">

@@ -17,4 +17,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login', 'Auth\LoginController@showLoginForm');
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+
+Route::group([
+    'middleware' => 'auth',
+], function () {
+
+    Route::group(['prefix' => "home"], function () {
+        Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/item/{id}', 'HomeController@newsItem');
+    });
+    
+    // SuperAdmin
+    Route::group(['prefix' => "dashboard",'middleware' => 'checkAdmin'], function () {
+        Route::get('/', 'Dashboard\DashboardController@index');
+
+        // News
+        Route::get('/news', 'Dashboard\DashboardController@getNews');
+    });
+});

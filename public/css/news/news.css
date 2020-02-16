@@ -1,0 +1,24 @@
+div.title h1 {
+    margin: 20px auto;
+}
+
+div.news {
+    /* position: relative; */
+    /* border: 1px solid; */
+    /* background-color: lightgray; */
+    position: relative;
+    border: 2px solid #000;
+    background-color: #19367f;
+    color: #fff;
+    box-shadow: 10px 5px 15px 0px #000;
+}
+
+div.news img {
+    width: 100%;
+}
+
+div.news a {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}

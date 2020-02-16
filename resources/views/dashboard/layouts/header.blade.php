@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm pt-0 pb-0">
+    <span style="font-size:30px;cursor:pointer" class="openLeftNav">&#9776;</span>
     <div class="container">
-        <a class="navbar-brand p-0" href="{{ url('/') }}">
+        <a class="navbar-brand p-0" href="{{ url('/dashboard') }}">
             <img src="{{ asset('images/klaudios.png') }}" alt="{{ config('app.name', 'KLAUDIOS') }}" class="logo" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

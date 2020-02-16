@@ -23,19 +23,16 @@
             <li>
                 <a href="#">
                     <i class="fab fa-instagram"></i>
-                    Instagram
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fab fa-facebook-f"></i>
-                    Facebook
                 </a>
             </li>
             <li>
                 <a href="#">
                     <i class="fab fa-twitter"></i>
-                    Facebook
                 </a>
             </li>
         </ul>
