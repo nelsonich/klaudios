@@ -12,6 +12,9 @@
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('adminka/script/leftNav.js') }}"></script>
+  <script src="{{ asset('adminka/script/script.js') }}"></script>
+  <script src="{{ asset('adminka/plugins/ckeditor/ckeditor.js') }}"></script>
+
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -38,5 +41,16 @@
       @include('dashboard.layouts.footer')
     </footer>
   </div>
+
+  <script>
+    var editors = document.querySelectorAll('.editor');
+    for(var i = 0; i < editors.length; i++) {
+      ClassicEditor
+        .create(editors[i])
+        .catch( error => {
+            console.error( error );
+        });
+    }
+  </script>
 </body>
 </html>

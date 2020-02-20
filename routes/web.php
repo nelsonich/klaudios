@@ -34,6 +34,11 @@ Route::group([
         Route::get('/', 'Dashboard\DashboardController@index');
 
         // News
-        Route::get('/news', 'Dashboard\DashboardController@getNews');
+        Route::group(['prefix' => "news"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getNews');
+            Route::post('/add', 'Dashboard\DashboardController@addNews')->name('add-news');
+            Route::post('/edit', 'Dashboard\DashboardController@editNews')->name('edit-news');
+            Route::post('/delete', 'Dashboard\DashboardController@deleteNews')->name('delete-news');
+        });
     });
 });
