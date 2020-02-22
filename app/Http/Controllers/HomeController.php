@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LikeNews;
 use App\Models\News;
+use App\Models\NewsComment;
+use App\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,12 +29,74 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news = News::all();
-        return view('home', ['news' => $news]);
+        $news = News::with('getNewsLikes', 'getNewsLikesCounts')->paginate(5);
+
+        return view('home', ['news' => $news,]);
     }
 
     public function newsItem($id)
     {
-        dd($id);
+        $news = News::where('id', $id)->with('getNewsLikes', 'getNewsLikesCounts')->first();
+        return view('news.newsInformation', ['news' => $news]);
+    }
+
+    public function likeNews(Request $request)
+    {
+        $user_id = Auth::id();
+        $news_id = $request->post('newsId');
+        $ifExistsRecord = LikeNews::where('user_id', $user_id)->where('news_id', $news_id)->exists();
+        if (!$ifExistsRecord) {
+            LikeNews::create([
+                "user_id" => $user_id,
+                "news_id" => $news_id,
+            ]);
+            return response()->json('created');
+        } else {
+            LikeNews::where('user_id', $user_id)->where('news_id', $news_id)->delete();
+            return response()->json('deleted');
+        }
+    }
+
+    public function commentsNews(Request $request)
+    {
+        $news_id = $request->post('newsId');
+        $newsComments = NewsComment::where('news_id', $news_id)->with('getCommentedUser')->orderBy('id', 'desc')->get();
+        return response()->json($newsComments);
+    }
+
+    public function createCommentNews(Request $request)
+    {
+        $news_id = $request->post('newsId');
+        $comment = $request->post('comment');
+        NewsComment::create([
+            "user_id" => Auth::id(),
+            "news_id" => $news_id,
+            "comment" => $comment,
+        ]);
+
+        return response()->json('ok');
+    }
+
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('Profile.profile', ['user' => $user]);
+    }
+
+    public function editProfile(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'user_name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $data = $request->except('_token');
+        $user_id = Auth::id();
+        User::find($user_id)->update($data);
+
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
     }
 }

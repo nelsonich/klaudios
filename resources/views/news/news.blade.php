@@ -12,7 +12,18 @@
             <p>{!! \App\Helpers\TextLimit::limit($item->description) !!}</p>
         </div>
         <div class="col-md-2">
+            <span class="likesCount">
+                {{ count($item['getNewsLikesCounts']) > 0 ? count($item['getNewsLikesCounts']) . " likes" : "No Likes" }}
+            </span>
+            <span class="likeNews {{ !$item['getNewsLikes']->isEmpty() ? "activeLike" : "" }}"
+                  data-newsId="{{ $item->id }}"
+                  title="{{ $item['getNewsLikes']->isEmpty() ? "like" : "dislike" }}"
+                  data-routeName="{{ route('like-news') }}">
+                <i class="far fa-heart"></i>
+            </span>
             <a href="{{ url('home/item', [$item->id]) }}" class="btn btn-sm btn-info">Read More</a>
         </div>
     </div>
 @endforeach
+
+{{ $news->links() }}

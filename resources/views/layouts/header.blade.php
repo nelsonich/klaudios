@@ -41,6 +41,13 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+
+                            <a href="{{ url('home/profile') }}" class="dropdown-item">
+                                Profile
+                            </a>
+                            <a href="{{ url('home') }}" class="dropdown-item">
+                                Home
+                            </a>
                         </div>
                     </li>
                 @endguest

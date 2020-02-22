@@ -28,7 +28,14 @@ Route::group([
 
     Route::group(['prefix' => "home"], function () {
         Route::get('/', 'HomeController@index')->name('home');
+        /* News */
         Route::get('/item/{id}', 'HomeController@newsItem');
+        Route::post('/like-news', 'HomeController@likeNews')->name('like-news');
+        Route::post('/comments-news', 'HomeController@commentsNews')->name('comments-news');
+        Route::post('/create-comment-news', 'HomeController@createCommentNews')->name('create-comment-news');
+
+        Route::get('/profile', 'HomeController@profile')->name('profile');
+        Route::post('/edit-profile', 'HomeController@editProfile')->name('edit-profile');
     });
 
     // SuperAdmin

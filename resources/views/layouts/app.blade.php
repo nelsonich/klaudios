@@ -12,6 +12,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/requestQuote.js') }}"></script>
+    <script src="{{ asset('js/News/likeNews.js') }}"></script>
+    <script src="{{ asset('js/News/newsComments.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('css/login_and_reg.css') }}">
     <link rel="stylesheet" href="{{ asset('css/news/news.css') }}">
     <link rel="stylesheet" href="{{ asset('css/socButtons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/news/newsComments.css') }}">
 </head>
 <body>
     <div id="app">

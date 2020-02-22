@@ -10,7 +10,7 @@ div.news {
     border: 2px solid #000;
     background-color: #19367f;
     color: #fff;
-    box-shadow: 10px 5px 15px 0px #000;
+    box-shadow: 10px 5px 15px 0 #000;
 }
 
 div.news img {
@@ -21,4 +21,31 @@ div.news a {
     position: absolute;
     bottom: 10px;
     right: 20px;
+}
+
+/* Like News */
+span.likeNews {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+span.likeNews:hover {
+    color: #e8a348;
+}
+
+span.activeLike {
+    color: #e8a348;
+}
+
+span.activeLike:hover {
+    color: #fff !important;
+}
+
+span.likesCount {
+    position: absolute;
+    right: 70px;
+    top: 20px;
 }
