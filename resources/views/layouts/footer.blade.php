@@ -1,3 +1,3 @@
 <div class="container">
-    <p class="text-center">Lorem ipsum dolor sit amet.</p>
+    <p class="text-center">Copyright © 2020 All rights reserved.</p>
 </div>   

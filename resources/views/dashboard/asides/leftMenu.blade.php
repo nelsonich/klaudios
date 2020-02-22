@@ -8,8 +8,8 @@
           Static Pages
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Home</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="{{ url('dashboard/about') }}">About</a>
+          <a class="dropdown-item" href="{{ url('dashboard/static-information') }}">Static Information</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </div>

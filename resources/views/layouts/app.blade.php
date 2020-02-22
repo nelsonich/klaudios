@@ -11,13 +11,14 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/requestQuote.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ url('https://fonts.googleapis.com/css?family=Nunito') }}" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+    <link href="{{ url('https://use.fontawesome.com/releases/v5.7.2/css/all.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/default/scrollBar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">

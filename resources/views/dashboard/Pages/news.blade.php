@@ -63,8 +63,10 @@
                                 Are You sure <strong>Delete</strong> this news ({{ $item->title }})
                               </p>
                             </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <div class="row justify-content-center mt-2">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-danger ml-1">Delete</button>
+                            </div>
                         </form>
                       </div>
                     </div>

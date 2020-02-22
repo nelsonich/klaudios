@@ -25,7 +25,6 @@ class HomeController extends Controller
     public function index()
     {
         $news = News::all();
-        // dd($news);
         return view('home', ['news' => $news]);
     }
 

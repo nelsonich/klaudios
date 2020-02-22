@@ -71,6 +71,15 @@ footer {
     width: 100%;
 }
 
+/* Three Points */
+span.threePoints {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100px;
+    white-space: nowrap;
+    display: block;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {
         padding-top: 15px;

@@ -25,7 +25,6 @@ img.logo {
 /* About Us */
 
 div.aboutSection div.aboutImage {
-    background-image: url('../images/about.png');
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -98,9 +97,12 @@ div.contactSection form.requestQuote input[type='submit']:hover {
     display: flex;
 }
 
+/* Request Quote */
+.emptyField {
+    border: 1px solid red !important;
+}
 
 /* Footer */
-
 footer {
     border-top: 1px solid #ccc;
     background-color: #fff;

@@ -1,37 +1,37 @@
 <div class="row mt-3 contactSection">
     <div class="col-md-4 text-center">
-        <img src="{{ asset('images/klaudios.png') }}" alt="Logo" />
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia doloribus laboriosam facilis est tenetur esse saepe consequatur. Reprehenderit explicabo iste quisquam iure, provident cupiditate maiores beatae veniam eligendi accusamus excepturi?</p>
+        <img src="{{ asset('images/' . $staticInformation->logo) }}" alt="Logo" />
+        <p>{!! $staticInformation->description !!}</p>
     </div>
     <div class="col-md-4 text-center">
         <h1 class="mt-5">Contact Us</h1>
-        <ul class="pr-5">
+        <ul class="pr-5 mb-4">
             <li>
                 <i class="fas fa-map-marker-alt"></i>
-                Lorem, ipsum dolor.
+                {{ $staticInformation->place }}
             </li>
             <li>
                 <i class="fas fa-phone-volume"></i>
-                Lorem, ipsum dolor.
+                {{ $staticInformation->phone }}
             </li>
             <li>
                 <i class="far fa-envelope"></i>
-                Lorem, ipsum dolor.
+                {{ $staticInformation->email }}
             </li>
         </ul>
         <ul class="pr-5 contactSocSites">
             <li>
-                <a href="#">
+                <a href="{{ $staticInformation->instagram_link }}" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ $staticInformation->facebook_link }}" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ $staticInformation->twitter_link }}" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
             </li>
@@ -39,7 +39,8 @@
     </div>
     <div class="col-md-4 text-center">
         <h1 class="mt-5">Request Quote</h1>
-        <form action="" class="text-left requestQuote">
+        <form class="text-left requestQuote">
+            @csrf
             <div class="row">
                 <div class="col-md-6">
                     <label for="firstname">
