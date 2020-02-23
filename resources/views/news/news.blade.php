@@ -1,5 +1,5 @@
 <div class="row text-center title">
-    <h1>Lorem, ipsum dolor.</h1>
+    <h1 title="News">News.</h1>
 </div>
 
 @foreach ($news as $item)
@@ -21,7 +21,9 @@
                   data-routeName="{{ route('like-news') }}">
                 <i class="far fa-heart"></i>
             </span>
-            <a href="{{ url('home/item', [$item->id]) }}" class="btn btn-sm btn-info">Read More</a>
+            <a href="{{ url('home/item', [$item->id]) }}" class="btn btn-sm btn-info">
+                {{ trans('form.readMore', [], \Session::get('locale')) }}
+            </a>
         </div>
     </div>
 @endforeach

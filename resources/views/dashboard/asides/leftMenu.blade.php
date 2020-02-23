@@ -9,8 +9,8 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="{{ url('dashboard/about') }}">About</a>
-          <a class="dropdown-item" href="{{ url('dashboard/static-information') }}">Static Information</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="{{ url('dashboard/features') }}">Features</a>
+            <a class="dropdown-item" href="{{ url('dashboard/static-information') }}">Static Information</a>
         </div>
       </div>
     <a href="{{ url('dashboard/news') }}">News</a>

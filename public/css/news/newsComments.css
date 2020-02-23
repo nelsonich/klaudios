@@ -109,6 +109,18 @@
     color: #6495ED;
     text-decoration: underline;
 }
-.comment_block .new_comment .love:hover {
-    color: #FF6347;
+/*.comment_block .new_comment .love:hover {*/
+/*    color: #FF6347;*/
+/*}*/
+
+.comment_block .new_comment li.loveComment:hover {
+    color: #FF6347 !important;
+}
+
+.comment_block .new_comment li.activeLove {
+    color: #FF6347 !important;
+}
+
+.comment_block .new_comment li.activeLove:hover {
+    color: #fff !important;
 }

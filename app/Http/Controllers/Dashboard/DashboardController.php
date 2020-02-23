@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Features;
 use App\Models\StaticInformation;
 use Illuminate\Http\Request;
 use App\User;
@@ -154,6 +155,21 @@ class DashboardController extends Controller
         $data = $request->except('_token');
         $data['logo'] = $profilefile;
         StaticInformation::find(1)->update($data);
+
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
+
+    public function getFeatures()
+    {
+        $features = Features::first();
+        return view('dashboard.Pages.StaticPages.features', ['features' => $features]);
+    }
+
+    public function editFeatures(Request $request)
+    {
+        $data = $request->except('_token');
+        Features::find(1)->update($data);
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();

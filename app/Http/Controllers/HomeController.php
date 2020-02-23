@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LikeNews;
 use App\Models\News;
 use App\Models\NewsComment;
+use App\Models\NewsCommentLikes;
 use App\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -60,7 +61,8 @@ class HomeController extends Controller
     public function commentsNews(Request $request)
     {
         $news_id = $request->post('newsId');
-        $newsComments = NewsComment::where('news_id', $news_id)->with('getCommentedUser')->orderBy('id', 'desc')->get();
+        $newsComments = NewsComment::where('news_id', $news_id)->with('getCommentedUser', 'getCommentLoves')->orderBy('id', 'desc')->get();
+
         return response()->json($newsComments);
     }
 
@@ -75,6 +77,24 @@ class HomeController extends Controller
         ]);
 
         return response()->json('ok');
+    }
+
+    public function likeCommentNews(Request $request)
+    {
+        $commentId = $request->post('commentId');
+        $user_id = Auth::id();
+
+        $ifExistsRecord = NewsCommentLikes::where('user_id', $user_id)->where('comment_id', $commentId)->exists();
+        if (!$ifExistsRecord) {
+            NewsCommentLikes::create([
+                "user_id" => $user_id,
+                "comment_id" => $commentId,
+            ]);
+            return response()->json('created');
+        } else {
+            NewsCommentLikes::where('user_id', $user_id)->where('comment_id', $commentId)->delete();
+            return response()->json('deleted');
+        }
     }
 
     public function profile()

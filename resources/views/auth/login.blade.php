@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ trans('menu.login', [], \Session::get('locale')) }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -15,15 +15,15 @@
                             <label for="email" class="col-md-4 col-sm-4 col-2 col-form-label text-md-right text-sm-right">
                                 <i class="far fa-envelope"></i>
                             </label>
-                            
+
                             <div class="col-md-6 col-sm-6 col-8">
-                                <input id="email" 
-                                type="email" 
-                                class="form-control @error('email') is-invalid @enderror" 
-                                name="email" value="{{ old('email') }}"  
-                                autocomplete="email" 
-                                autofocus 
-                                placeholder="E-mail" />
+                                <input id="email"
+                                type="email"
+                                class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}"
+                                autocomplete="email"
+                                autofocus
+                                placeholder="{{ trans('form.email', [], \Session::get('locale')) }}" />
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -35,16 +35,16 @@
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-sm-4 col-2 col-form-label text-md-right text-sm-right">
-                                <i class="fas fa-lock"></i>    
+                                <i class="fas fa-lock"></i>
                             </label>
-                            
+
                             <div class="col-md-6 col-sm-6 col-8">
-                                <input id="password" 
-                                type="password" 
-                                class="form-control @error('password') is-invalid @enderror" 
-                                name="password" 
-                                autocomplete="current-password" 
-                                placeholder="Password" />
+                                <input id="password"
+                                type="password"
+                                class="form-control @error('password') is-invalid @enderror"
+                                name="password"
+                                autocomplete="current-password"
+                                placeholder="{{ trans('form.password', [], \Session::get('locale')) }}" />
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -69,7 +69,7 @@
                         <div class="form-group row mb-0 text-center">
                             <div class="col-md">
                                 <button type="submit" class="btn btn-warning">
-                                    {{ __('Login') }}
+                                    {{ trans('menu.login', [], \Session::get('locale')) }}
                                 </button>
 
                                 @if (Route::has('password.request'))

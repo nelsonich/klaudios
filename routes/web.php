@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'StaticPages\HomePageController@index');
+Route::get('/lang/{locale}', 'StaticPages\HomePageController@lang');
 Route::post('/request-quote', 'StaticPages\HomePageController@requestQuote')->name('request-quote');
 
 Auth::routes();
@@ -33,6 +34,7 @@ Route::group([
         Route::post('/like-news', 'HomeController@likeNews')->name('like-news');
         Route::post('/comments-news', 'HomeController@commentsNews')->name('comments-news');
         Route::post('/create-comment-news', 'HomeController@createCommentNews')->name('create-comment-news');
+        Route::post('/like-comment-news', 'HomeController@likeCommentNews')->name('like-comment-news');
 
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::post('/edit-profile', 'HomeController@editProfile')->name('edit-profile');
@@ -61,6 +63,12 @@ Route::group([
         Route::group(['prefix' => "static-information"], function () {
             Route::get('/', 'Dashboard\DashboardController@getStaticInfo');
             Route::post('/edit', 'Dashboard\DashboardController@editStaticInformation')->name('edit-static-information');
+        });
+
+        // Features
+        Route::group(['prefix' => "features"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getFeatures');
+            Route::post('/edit', 'Dashboard\DashboardController@editFeatures')->name('edit-features');
         });
     });
 });

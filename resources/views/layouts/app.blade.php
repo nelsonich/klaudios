@@ -13,7 +13,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/requestQuote.js') }}"></script>
     <script src="{{ asset('js/News/likeNews.js') }}"></script>
-    <script src="{{ asset('js/News/newsComments.js') }}"></script>
+    @stack('scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

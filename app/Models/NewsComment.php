@@ -18,4 +18,9 @@ class NewsComment extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+
+    public function getCommentLoves()
+    {
+        return $this->hasOne(NewsCommentLikes::class, 'comment_id', 'id');
+    }
 }

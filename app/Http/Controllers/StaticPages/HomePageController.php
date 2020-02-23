@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\StaticPages;
 
 use App\Models\About;
+use App\Models\Features;
 use App\Models\RequestQuote;
 use App\Models\StaticInformation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 
 class HomePageController extends Controller
@@ -15,9 +17,11 @@ class HomePageController extends Controller
     {
         $about = About::first();
         $staticInformation = StaticInformation::first();
+        $features = Features::first();
         return view('welcome', [
             'about' => $about,
             'staticInformation' => $staticInformation,
+            'features' => $features,
         ]);
     }
 
@@ -42,5 +46,13 @@ class HomePageController extends Controller
         });
 
         return response()->json('ok');
+    }
+
+    public function lang($locale)
+    {
+        App::setLocale($locale);
+        session()->put('locale', $locale);
+//        dd(app()->getLocale());
+        return redirect()->back();
     }
 }

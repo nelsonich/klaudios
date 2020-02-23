@@ -20,9 +20,14 @@
                   data-routeName="{{ route('like-news') }}">
                 <i class="far fa-heart"></i>
             </span>
-            <a href="{{ url('home') }}" class="btn btn-sm btn-info">Back</a>
+            <a href="{{ url('home') }}" class="btn btn-sm btn-info">
+                {{ trans('form.back', [], \Session::get('locale')) }}
+            </a>
         </div>
     </div>
 
     @include('news.newsComments')
 @endsection
+@push('scripts')
+    <script src="{{ asset('js/News/newsComments.js') }}"></script>
+@endpush

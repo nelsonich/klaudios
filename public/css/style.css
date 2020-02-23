@@ -21,6 +21,10 @@ img.logo {
     width: 40%;
 }
 
+main {
+    min-height: 77vh;
+}
+
 
 /* About Us */
 

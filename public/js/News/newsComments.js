@@ -7,6 +7,7 @@ $(document).ready(function () {
 
         return sURLVariables;
     };
+
     getNewsComments();
     function getNewsComments() {
         let getUrl = getUrlParameter();
@@ -39,9 +40,9 @@ $(document).ready(function () {
                                                 </div>
                                                 <div class="comment_tools">
                                                     <ul>
-                                                        <li><i class="fa fa-share-alt"></i></li>
-                                                        <li><i class="fa fa-reply"></i></li>
-                                                        <li><i class="fa fa-heart love"></i></li>
+<!--                                                        <li><i class="fa fa-share-alt"></i></li>-->
+<!--                                                        <li><i class="fa fa-reply"></i></li>-->
+                                                        <li class="loveComment ${ value['get_comment_loves'] ? 'activeLove' : '' }" data-commentId="${value['id']}"><i class="fa fa-heart love"></i></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -94,5 +95,34 @@ $(document).ready(function () {
                 }
             });
         }
+    });
+
+    $(document).on('click', '.loveComment', function () {
+        let that = $(this);
+        let routeName = $('.comment_block').data('likecommentroutename');
+        let commentId = that.data('commentid');
+        $.ajax({
+            url: routeName,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            method: 'post',
+            data: {
+                commentId: commentId,
+            },
+            dataType: 'json',
+            success: function (response) {
+                if(response === "created") {
+                    that.addClass('activeLove');
+                    that.attr('title', 'dislove');
+                } else if(response === "deleted") {
+                    that.removeClass('activeLove');
+                    that.attr('title', 'Love');
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     });
 });
