@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -66,6 +67,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Mail::send('emails.registrationEmail', $data, function ($m) use ($data) {
+            $m->from(env('MAIL_FROM'), env('APP_NAME'));
+            $m->to($data['email'], $data['first_name'])
+                ->subject('Thank you!');
+        });
+
+        Mail::send('emails.Admin.registrationEmail', $data, function ($m) use ($data) {
+            $m->from(env('MAIL_FROM'), env('APP_NAME'));
+            $m->to(env('MAIL_TO'), $data['first_name'])
+                ->subject('Thank you!');
+        });
+
         return User::create([
             'role' => "user",
             'first_name' => $data['first_name'],
