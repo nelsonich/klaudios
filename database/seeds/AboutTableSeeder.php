@@ -14,8 +14,23 @@ class AboutTableSeeder extends Seeder
     {
         About::create([
             "title" => "About Us",
-            "description" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit consequatur architecto obcaecati eveniet cupiditate eaque quisquam sed incidunt suscipit omnis et ex voluptatum, beatae veritatis excepturi blanditiis esse expedita dignissimos rem optio commodi quasi repellat! Ipsa pariatur id, voluptates blanditiis quidem maxime exercitationem repudiandae ad saepe adipisci natus iusto eos inventore debitis odio laudantium optio soluta reiciendis repellendus, perspiciatis officiis! Doloremque expedita neque dolor alias molestias, odit dolore odio consequuntur perspiciatis distinctio, tempore cupiditate, ab dolores totam est officiis consectetur? Eligendi magnam beatae praesentium ipsam provident sequi molestiae nisi quo illo reprehenderit, ullam adipisci labore magni dolor earum veniam veritatis?",
-            "image" => "about.png"
+            "description" => "We have always dreamed of having our own business. And here we have opened it. We started our business from  February 20  2020.We will help you find a good auto mechanic  that will help you repair your cars with quality. We also have our page on Facebook, Instagram and Twitter. We hope that you will appreciate our work and that our business will grow rapidly. We look forward to each and every one.",
+            "image" => "about.png",
+            "lang" => "en",
+        ]);
+
+        About::create([
+            "title" => "О Нас",
+            "description" => "Мы всегда мечтали иметь собственный бизнес. И вот мы его открыли. Мы начали свой бизнес с 20 февраля 2020 года. Мы поможем вам найти хорошего автомеханика, который поможет вам качественно ремонтировать ваши автомобили. У нас также есть наша страница в Facebook, Instagram и Twitter. Мы надеемся, что вы оцените нашу работу и наш бизнес будет быстро расти. Мы с нетерпением ждем каждого.",
+            "image" => "about.png",
+            "lang" => "ru",
+        ]);
+
+        About::create([
+            "title" => "Մեր Մասին",
+            "description" => "Միշտ երազել ենք ունենալ մեր սեփական բիզնեսը: Եվ ահա մենք բացեցինք այն: Մենք սկսեցինք մեր գործը 2020 թվականի փետրվարի 20-ից: Մենք կօգնենք ձեզ գտնել լավ ավտո մեխանիկ, որը կօգնի ձեզ որակյալ վերանորոգել ձեր մեքենաները: Մենք ունենք նաև մեր էջը Facebook- ում, Instagram- ում և Twitter- ում: Հուսով ենք, որ դուք կգնահատեք մեր աշխատանքը, և որ մեր գործն արագ կաճի: Մենք անհամբեր սպասում ենք յուրաքանչյուրին:",
+            "image" => "about.png",
+            "lang" => "am",
         ]);
     }
 }

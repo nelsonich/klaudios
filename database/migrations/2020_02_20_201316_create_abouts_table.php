@@ -18,6 +18,7 @@ class CreateAboutsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('image');
+            $table->string('lang');
             $table->timestamps();
         });
     }

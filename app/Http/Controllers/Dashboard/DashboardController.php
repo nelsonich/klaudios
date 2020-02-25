@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Features;
+use App\Models\Languages;
 use App\Models\StaticInformation;
 use Illuminate\Http\Request;
 use App\User;
@@ -173,5 +174,21 @@ class DashboardController extends Controller
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();
+    }
+
+    public function getLanguages()
+    {
+        $languages = Languages::all();
+        return view('dashboard.Pages.languages', ['languages' => $languages]);
+    }
+
+    public function editLangStatus(Request $request)
+    {
+        $langId = $request->post('langId');
+        $lang = Languages::find($langId);
+        $staus = $lang->status == 1 ? 0 : 1;
+        $lang->status = $staus;
+        $lang->save();
+        return response()->json('ok');
     }
 }

@@ -11,8 +11,21 @@
 |
 */
 
+use App\Models\Languages;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+
+View::composer('layouts.app', function($view)
+{
+    $languages = Languages::where('status', 1)->get();
+    $view->with(
+        [
+            'languages' => $languages,
+        ]);
+});
+
+
 
 Route::get('/', 'StaticPages\HomePageController@index');
 Route::get('/lang/{locale}', 'StaticPages\HomePageController@lang');
@@ -69,6 +82,12 @@ Route::group([
         Route::group(['prefix' => "features"], function () {
             Route::get('/', 'Dashboard\DashboardController@getFeatures');
             Route::post('/edit', 'Dashboard\DashboardController@editFeatures')->name('edit-features');
+        });
+
+        // Languages
+        Route::group(['prefix' => "languages"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getLanguages');
+            Route::post('/change-lang-status', 'Dashboard\DashboardController@editLangStatus')->name('change-lang-status');
         });
     });
 });

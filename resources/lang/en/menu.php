@@ -8,4 +8,5 @@ return [
     'logout' => 'Logout',
     'editProfile' => 'Edit Profile',
     'edit' => 'Edit',
+    'language' => 'Language',
 ];

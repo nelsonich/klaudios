@@ -1,4 +1,3 @@
-{{--@dd(app()->getLocale())--}}
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm pt-0 pb-0">
     <div class="container">
         <a class="navbar-brand p-0" href="{{ url('/') }}">
@@ -16,15 +15,17 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto justify-content-end">
-                <li class="nav-item ml-1" style="width: 15%;">
-                    <a class="nav-link" href="{{ url('/lang', 'en') }}" title="EN">
-                        <img src="{{ asset('images/lang/en.png') }}" alt="English" class="w-100">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ trans('menu.language', [], \Session::get('locale')) }}
                     </a>
-                </li>
-                <li class="nav-item ml-1" style="width: 15%;" title="RU">
-                    <a class="nav-link" href="{{ url('/lang', 'ru') }}">
-                        <img src="{{ asset('images/lang/ru.png') }}" alt="Russian" class="w-100">
-                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 80px !important;min-width: 0;">
+                        @foreach($languages as $lang)
+                            <a class="dropdown-item" href="{{ url('/lang', $lang->lang) }}" title="{{ $lang->lang }}">
+                                <img src="{{ asset('images/lang/' . $lang->image) }}" alt="{{ $lang->lang }}" class="w-100">
+                            </a>
+                        @endforeach
+                    </div>
                 </li>
                 <!-- Authentication Links -->
                 @guest
@@ -47,6 +48,12 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a href="{{ url('home/profile') }}" class="dropdown-item">
+                                {{ trans('menu.profile', [], \Session::get('locale')) }}
+                            </a>
+                            <a href="{{ url('home') }}" class="dropdown-item">
+                                {{ trans('menu.home', [], \Session::get('locale')) }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -56,13 +63,6 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-
-                            <a href="{{ url('home/profile') }}" class="dropdown-item">
-                                {{ trans('menu.profile', [], \Session::get('locale')) }}
-                            </a>
-                            <a href="{{ url('home') }}" class="dropdown-item">
-                                {{ trans('menu.home', [], \Session::get('locale')) }}
-                            </a>
                         </div>
                     </li>
                 @endguest

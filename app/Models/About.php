@@ -11,5 +11,6 @@ class About extends Model
         "title",
         "description",
         "image",
+        "lang",
     ];
 }

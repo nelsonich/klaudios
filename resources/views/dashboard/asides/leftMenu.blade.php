@@ -16,5 +16,5 @@
     <a href="{{ url('dashboard/news') }}">News</a>
     <a href="#">Services</a>
     <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <a href="{{ url('dashboard/languages') }}">Languages</a>
 </div>

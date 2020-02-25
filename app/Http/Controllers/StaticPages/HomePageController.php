@@ -10,14 +10,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class HomePageController extends Controller
 {
     public function index()
     {
-        $about = About::first();
+        $lang = Session::get('locale');
+
+        if ($lang == null) $lang = 'en';
+        $about = About::where('lang', $lang)->first();
         $staticInformation = StaticInformation::first();
-        $features = Features::first();
+        $features = Features::where('lang', $lang)->first();
         return view('welcome', [
             'about' => $about,
             'staticInformation' => $staticInformation,

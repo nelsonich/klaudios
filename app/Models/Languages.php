@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Features extends Model
+class Languages extends Model
 {
-    protected $table = "features";
+    protected $table = "languages";
 
     protected $fillable = [
-        "title",
-        "description",
-        "image",
         "lang",
+        "image",
+        "status",
     ];
 }
