@@ -4,12 +4,13 @@ namespace App\Http\Controllers\StaticPages;
 
 use App\Models\About;
 use App\Models\Features;
+use App\Helpers\MailSender;
+use Illuminate\Http\Request;
 use App\Models\RequestQuote;
 use App\Models\StaticInformation;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
 class HomePageController extends Controller
@@ -41,13 +42,13 @@ class HomePageController extends Controller
         $data = $request->except('_token');
         RequestQuote::create($data);
         $data['messageQuote'] = $data['message'];
+        $data['first_name'] = $data['firstName'];
+        $data['last_name'] = $data['lastName'];
         unset($data['message']);
+        unset($data['firstName']);
+        unset($data['lastName']);
 
-        Mail::send('emails.requestQuote', $data, function ($m) use ($data) {
-            $m->from(env('MAIL_FROM'), env('APP_NAME'));
-            $m->to(env('MAIL_TO'), $data['firstName'])
-                ->subject('Thank you!');
-        });
+        MailSender::sendToAdmin($data, 'emails.requestQuote');
 
         return response()->json('ok');
     }

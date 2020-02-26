@@ -21,7 +21,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 80px !important;min-width: 0;">
                         @foreach($languages as $lang)
-                            <a class="dropdown-item" href="{{ url('/lang', $lang->lang) }}" title="{{ $lang->lang }}">
+                            <a class="dropdown-item {{ $lang->lang == \Session::get('locale') ? "active" : "" }}" href="{{ url('/lang', $lang->lang) }}" title="{{ $lang->lang }}">
                                 <img src="{{ asset('images/lang/' . $lang->image) }}" alt="{{ $lang->lang }}" class="w-100">
                             </a>
                         @endforeach

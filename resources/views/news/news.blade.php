@@ -11,7 +11,7 @@
             <h2 title="{{ $item->title }}">{{ $item->title }}</h2>
             <p>{!! \App\Helpers\TextLimit::limit($item->description) !!}</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 likes">
             <span class="likesCount">
                 {{ count($item['getNewsLikesCounts']) > 0 ? count($item['getNewsLikesCounts']) . " likes" : "No Likes" }}
             </span>

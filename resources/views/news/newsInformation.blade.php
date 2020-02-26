@@ -3,14 +3,10 @@
 
 @section('content')
     <div class="row news py-2 m-2">
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-4">
             <img src="{{ asset('images/news/' . $news->image) }}" alt="{{ $news->title }}" class="img-fluid" />
         </div>
-        <div class="col-md-7 py-5">
-            <h2 title="{{ $news->title }}">{{ $news->title }}</h2>
-            <p>{!! $news->description !!}</p>
-        </div>
-        <div class="col-md-2">
+        <div class="col-md-9 col-sm-9 col-8">
             <span class="likesCount">
                 {{ count($news['getNewsLikesCounts']) > 0 ? count($news['getNewsLikesCounts']) . " likes" : "No Likes" }}
             </span>
@@ -20,6 +16,10 @@
                   data-routeName="{{ route('like-news') }}">
                 <i class="far fa-heart"></i>
             </span>
+        </div>
+        <div class="col-md-12 py-5">
+            <h2 title="{{ $news->title }}">{{ $news->title }}</h2>
+            <p>{!! $news->description !!}</p>
             <a href="{{ url('home') }}" class="btn btn-sm btn-info">
                 {{ trans('form.back', [], \Session::get('locale')) }}
             </a>

@@ -49,3 +49,51 @@ span.likesCount {
     right: 70px;
     top: 20px;
 }
+
+
+/* Media */
+@media screen and (max-width: 767px){
+    div.news div img {
+        width: auto;
+    }
+
+    div.news div {
+        text-align: center;
+    }
+
+    div.news div.likes span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px){
+    div.comment_block {
+        width: 95%;
+    }
+
+    div.comment_block h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    div.user_avatar {
+        display: none;
+    }
+
+    input#createComment {
+        font-size: 15px;
+    }
+
+    div.input_comment {
+        width: calc(100% - 25px) !important;
+    }
+
+    .comment_block .new_comment .user_comment {
+        padding-left: 0 !important;
+    }
+
+    .comment_block .new_comment .comment_body {
+        width: calc(100% - 15px) !important;
+    }
+}

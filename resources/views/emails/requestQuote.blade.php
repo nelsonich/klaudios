@@ -10,8 +10,8 @@
 <body>
     <h1>Hello <strong>Klaudios</strong></h1>
     <ul>
-        <li>First name - {{ $firstName }}</li>
-        <li>Last name - {{ $lastName }}</li>
+        <li>First name - {{ $first_name }}</li>
+        <li>Last name - {{ $last_name }}</li>
         <li>Subject - {{ $subject }}</li>
         <li>Message - {!! $messageQuote !!}</li>
     </ul>
