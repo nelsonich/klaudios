@@ -69,7 +69,7 @@ Route::group([
         //About
         Route::group(['prefix' => "about"], function () {
             Route::get('/', 'Dashboard\DashboardController@getAbout');
-            Route::post('/edit', 'Dashboard\DashboardController@editAbout')->name('edit-about');
+            Route::post('/edit/{lang?}', 'Dashboard\DashboardController@editAbout')->name('edit-about');
         });
 
         // Static Information
@@ -81,7 +81,7 @@ Route::group([
         // Features
         Route::group(['prefix' => "features"], function () {
             Route::get('/', 'Dashboard\DashboardController@getFeatures');
-            Route::post('/edit', 'Dashboard\DashboardController@editFeatures')->name('edit-features');
+            Route::post('/edit/{lang?}', 'Dashboard\DashboardController@editFeatures')->name('edit-features');
         });
 
         // Languages

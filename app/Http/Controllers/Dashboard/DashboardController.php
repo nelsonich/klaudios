@@ -95,11 +95,11 @@ class DashboardController extends Controller
 
     public function getAbout()
     {
-        $about = About::first();
-        return view('dashboard.Pages.StaticPages.about', ['about' => $about]);
+        $abouts = About::all();
+        return view('dashboard.Pages.StaticPages.about', ['abouts' => $abouts]);
     }
 
-    public function editAbout(Request $request)
+    public function editAbout(Request $request, $lang)
     {
         $request->validate([
             'title' => 'required',
@@ -107,19 +107,19 @@ class DashboardController extends Controller
             'description' => 'required',
         ]);
 
-        if($request->hasFile('image')) {
-            $files = $request->file('image');
-            $destinationPath = 'images/'; // upload path
-            $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $profilefile);
-
-        } else {
-            $profilefile = 'about.png';
-        }
+//        if($request->hasFile('image')) {
+//            $files = $request->file('image');
+//            $destinationPath = 'images/'; // upload path
+//            $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
+//            $files->move($destinationPath, $profilefile);
+//
+//        } else {
+//            $profilefile = 'about.png';
+//        }
 
         $data = $request->except('_token');
-        $data['image'] = $profilefile;
-        About::find(1)->update($data);
+//        $data['image'] = $profilefile;
+        About::where('lang', $lang)->update($data);
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();
@@ -163,14 +163,14 @@ class DashboardController extends Controller
 
     public function getFeatures()
     {
-        $features = Features::first();
+        $features = Features::all();
         return view('dashboard.Pages.StaticPages.features', ['features' => $features]);
     }
 
-    public function editFeatures(Request $request)
+    public function editFeatures(Request $request, $lang)
     {
         $data = $request->except('_token');
-        Features::find(1)->update($data);
+        Features::where('lang', $lang)->update($data);
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();
