@@ -21,6 +21,6 @@ class News extends Model
 
     public function getNewsLikesCounts()
     {
-        return $this->hasMany(LikeNews::class, 'news_id', 'id');
+        return $this->hasMany(LikeNews::class, 'news_id', 'id')->with('getNewsLikedUser');
     }
 }

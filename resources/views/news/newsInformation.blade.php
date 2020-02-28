@@ -7,7 +7,7 @@
             <img src="{{ asset('images/news/' . $news->image) }}" alt="{{ $news->title }}" class="img-fluid" />
         </div>
         <div class="col-md-9 col-sm-9 col-8">
-            <span class="likesCount">
+            <span class="likesCount" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ App\Helpers\getLikedUser::getUserName($news) }}">
                 {{ count($news['getNewsLikesCounts']) > 0 ? count($news['getNewsLikesCounts']) . " likes" : "No Likes" }}
             </span>
             <span class="likeNews {{ !$news['getNewsLikes']->isEmpty() ? "activeLike" : "" }}"

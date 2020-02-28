@@ -12,7 +12,7 @@
             <p>{!! \App\Helpers\TextLimit::limit($item->description) !!}</p>
         </div>
         <div class="col-md-2 likes">
-            <span class="likesCount">
+            <span class="likesCount" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ App\Helpers\getLikedUser::getUserName($item) }}">
                 {{ count($item['getNewsLikesCounts']) > 0 ? count($item['getNewsLikesCounts']) . " likes" : "No Likes" }}
             </span>
             <span class="likeNews {{ !$item['getNewsLikes']->isEmpty() ? "activeLike" : "" }}"

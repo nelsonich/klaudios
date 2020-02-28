@@ -21,8 +21,8 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
   <!-- Styles -->
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/all.css') }}">
   <link rel="stylesheet" href="{{ asset('css/default/scrollBar.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('adminka/admin.css') }}">
