@@ -14,17 +14,24 @@
                     <th scope="col">E-Mail</th>
                 </tr>
             </thead>
-        <tbody>
-            @foreach ($users as $user)
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <th scope="row">{{ $user->id }}</th>
+                        <th scope="row">{{ $user->first_name }}</th>
+                        <th scope="row">{{ $user->last_name }}</th>
+                        <th scope="row">{{ $user->user_name }}</th>
+                        <th scope="row">{{ $user->email }}</th>
+                    </tr>
+                @endforeach
+            </tbody>
+            <tfoot>
                 <tr>
-                    <th scope="row">{{ $user->id }}</th>
-                    <th scope="row">{{ $user->first_name }}</th>
-                    <th scope="row">{{ $user->last_name }}</th>
-                    <th scope="row">{{ $user->user_name }}</th>
-                    <th scope="row">{{ $user->email }}</th>
+                    <th scope="row" colspan="5" class="justify-content-end">
+                        {{ $users->links() }}
+                    </th>
                 </tr>
-            @endforeach
-        </tbody>
+            </tfoot>
         </table>
     </div>
 </div>

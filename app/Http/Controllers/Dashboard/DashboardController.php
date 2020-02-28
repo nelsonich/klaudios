@@ -17,7 +17,7 @@ class DashboardController extends Controller
     public static function index()
     {
         $user = Auth::user();
-        $users = User::where('role', 'user')->get();
+        $users = User::where('role', 'user')->paginate(5);
 
         return view('dashboard.home', [
             'user' => $user,
