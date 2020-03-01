@@ -29,6 +29,7 @@ View::composer('layouts.app', function($view)
 
 Route::get('/', 'StaticPages\HomePageController@index');
 Route::get('/lang/{locale}', 'StaticPages\HomePageController@lang');
+Route::get('/faq', 'StaticPages\HomePageController@faq');
 Route::post('/request-quote', 'StaticPages\HomePageController@requestQuote')->name('request-quote');
 
 Auth::routes();
@@ -56,6 +57,7 @@ Route::group([
     // SuperAdmin
     Route::group(['prefix' => "dashboard",'middleware' => 'checkAdmin'], function () {
         Route::get('/', 'Dashboard\DashboardController@index');
+        Route::post('/edit-userData', 'Dashboard\DashboardController@editUserData')->name('edit-userData');
 
         // News
         Route::group(['prefix' => "news"], function () {
@@ -82,6 +84,11 @@ Route::group([
         Route::group(['prefix' => "features"], function () {
             Route::get('/', 'Dashboard\DashboardController@getFeatures');
             Route::post('/edit/{lang?}', 'Dashboard\DashboardController@editFeatures')->name('edit-features');
+        });
+
+        // Request Quotes
+        Route::group(['prefix' => "request-quote"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getRequestQuote');
         });
 
         // Languages

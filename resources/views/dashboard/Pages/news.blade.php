@@ -25,23 +25,23 @@
                 <tr>
                     <th scope="row">{{ $item->id }}</th>
                     <th scope="row">
-                        <img src="{{ asset('images/news/' . $item->image) }}" alt="{{ $item->title }}" class="img-fluid w-50" />    
+                        <img src="{{ asset('images/news/' . $item->image) }}" alt="{{ $item->title }}" class="img-fluid w-50" />
                     </th>
                     <th scope="row">{{ $item->title }}</th>
                     <th scope="row">
-                        {!! \App\Helpers\TextLimit::limit($item->description) !!}    
+                        {!! \App\Helpers\TextLimit::limit($item->description) !!}
                     </th>
-                    <td scope="row">
+                    <th scope="row">
                       <a type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editNewsModal{{ $item->id }}">
                         <i class="fas fa-edit"></i>
                       </a>
-                    </td>
-                    <td scope="row">
+                    </th>
+                    <th scope="row">
                       <a type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteNewsModal{{ $item->id }}">
                         <i class="fas fa-trash-alt"></i>
                       </a>
-                    </td>
-                    <td scope="row"></td>
+                    </th>
+                    <th scope="row"></th>
                 </tr>
 
 
@@ -115,7 +115,7 @@
                               {{ $item->description }}
                             </textarea>
                           </div>
-                          
+
                           <div class="modal-footer">
                             @if ($errors->any())
                               <div class="alert alert-danger">
@@ -189,7 +189,7 @@
                 {{ @old('description') }}
               </textarea>
             </div>
-            
+
             <div class="modal-footer">
 
               @if ($errors->any())

@@ -9,4 +9,5 @@ return [
     'editProfile' => 'Edit Profile',
     'edit' => 'Edit',
     'language' => 'Language',
+    'faq' => 'FAQ',
 ];

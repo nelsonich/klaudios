@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\StaticPages;
 
 use App\Models\About;
+use App\Models\Faq;
 use App\Models\Features;
 use App\Helpers\MailSender;
 use Illuminate\Http\Request;
@@ -59,5 +60,16 @@ class HomePageController extends Controller
         session()->put('locale', $locale);
 //        dd(app()->getLocale());
         return redirect()->back();
+    }
+
+    public function faq()
+    {
+        $lang = Session::get('locale');
+
+        if ($lang == null) $lang = 'en';
+        $faq = Faq::where('lang', $lang)->get();
+        return view('sections.faq', [
+            'faq' => $faq,
+        ]);
     }
 }

@@ -2,7 +2,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color: #111;
@@ -64,11 +64,70 @@ footer {
     padding: 5px;
 }
 
+.w-10 {
+    width: 10%;
+}
+
 
 /* Ckeditor Styles */
 
 .ck.ck-editor {
     width: 100%;
+}
+
+/* Edit Languages */
+
+th.lang {
+    font-variant: small-caps;
+    font-size: 25px;
+}
+
+input[type=checkbox] + label {
+    /*display: block;*/
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    padding-left: .5em;
+    padding-top: .2em;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+}
+
+input[type=checkbox] + label:active:before {
+    transform: scale(0);
+}
+
+input[type=checkbox]:checked + label:before {
+    background-color: MediumSeaGreen;
+    border-color: MediumSeaGreen;
+    color: #fff;
+    font-size: 13px;
+}
+
+input[type=checkbox]:disabled + label:before {
+    transform: scale(1);
+    border-color: #aaa;
+}
+
+input[type=checkbox]:checked:disabled + label:before {
+    transform: scale(1);
+    background-color: #bfb;
+    border-color: #bfb;
 }
 
 /* Three Points */

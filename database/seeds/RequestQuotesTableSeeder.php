@@ -24,8 +24,8 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'Test',
                 'subject' => 'Subject',
                 'message' => 'Message',
-                'created_at' => '2020-02-23 21:45:46',
-                'updated_at' => '2020-02-23 21:45:46',
+                'created_at' => '2020-02-23 22:45:46',
+                'updated_at' => '2020-02-23 22:45:46',
             ),
             1 => 
             array (
@@ -34,8 +34,8 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'Test',
                 'subject' => 'Test',
                 'message' => 'Test',
-                'created_at' => '2020-02-23 21:52:02',
-                'updated_at' => '2020-02-23 21:52:02',
+                'created_at' => '2020-02-23 22:52:02',
+                'updated_at' => '2020-02-23 22:52:02',
             ),
             2 => 
             array (
@@ -44,8 +44,8 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'rgtrg',
                 'subject' => 'regretehg',
                 'message' => 'ergreg',
-                'created_at' => '2020-02-23 21:52:53',
-                'updated_at' => '2020-02-23 21:52:53',
+                'created_at' => '2020-02-23 22:52:53',
+                'updated_at' => '2020-02-23 22:52:53',
             ),
             3 => 
             array (
@@ -54,8 +54,8 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'Xachatryan',
                 'subject' => 'Subject',
                 'message' => 'Message',
-                'created_at' => '2020-02-24 16:17:17',
-                'updated_at' => '2020-02-24 16:17:17',
+                'created_at' => '2020-02-24 17:17:17',
+                'updated_at' => '2020-02-24 17:17:17',
             ),
             4 => 
             array (
@@ -64,8 +64,8 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'Aleksanyan',
                 'subject' => 'meqenayi konsultaciya',
                 'message' => 'inch karjena konsultaciyan',
-                'created_at' => '2020-02-25 08:39:42',
-                'updated_at' => '2020-02-25 08:39:42',
+                'created_at' => '2020-02-25 09:39:42',
+                'updated_at' => '2020-02-25 09:39:42',
             ),
             5 => 
             array (
@@ -74,8 +74,8 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'Andriasyan',
                 'subject' => 'Qqq',
                 'message' => 'Hi',
-                'created_at' => '2020-02-25 19:38:46',
-                'updated_at' => '2020-02-25 19:38:46',
+                'created_at' => '2020-02-25 20:38:46',
+                'updated_at' => '2020-02-25 20:38:46',
             ),
             6 => 
             array (
@@ -84,8 +84,18 @@ class RequestQuotesTableSeeder extends Seeder
                 'lastName' => 'Andriasyan',
                 'subject' => 'Hi',
                 'message' => 'Hi Nelson',
-                'created_at' => '2020-02-25 19:41:01',
-                'updated_at' => '2020-02-25 19:41:01',
+                'created_at' => '2020-02-25 20:41:01',
+                'updated_at' => '2020-02-25 20:41:01',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'firstName' => 'ffsdv',
+                'lastName' => 'svdea',
+                'subject' => 'dsvcdsv',
+                'message' => 'scvdsavsa',
+                'created_at' => '2020-02-26 22:25:43',
+                'updated_at' => '2020-02-26 22:25:43',
             ),
         ));
         

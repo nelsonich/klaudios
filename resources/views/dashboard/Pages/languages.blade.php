@@ -18,11 +18,12 @@
                         <tr>
                             <th scope="row">{{ $lang->id }}</th>
                             <th scope="row">
-                                <img src="{{ asset('images/lang/' . $lang->image) }}" alt="{{ $lang->lang }}" class="img-fluid w-25" />
+                                <img src="{{ asset('images/lang/' . $lang->image) }}" alt="{{ $lang->lang }}" class="img-fluid w-10" />
                             </th>
-                            <th scope="row">{{ $lang->lang }}</th>
+                            <th scope="row" class="lang">{{ $lang->lang }}</th>
                             <th scope="row">
-                                <input type="checkbox" class="changeLangStatus" {{ $lang->lang == "en" ? "disabled" : "" }} data-langId="{{ $lang->id }}" {{ $lang->status == 1 ? "checked" : "" }}>
+                                <input type="checkbox" class="changeLangStatus" {{ $lang->lang == "en" ? "disabled" : "" }} data-langId="{{ $lang->id }}" {{ $lang->status == 1 ? "checked" : "" }} id="{{ $lang->lang }}" name="{{ $lang->lang }}" value="{{ $lang->lang }}">
+                                <label for="{{ $lang->lang }}"></label>
                             </th>
                         </tr>
                     @endforeach

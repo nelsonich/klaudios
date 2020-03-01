@@ -14,7 +14,7 @@
         </div>
       </div>
     <a href="{{ url('dashboard/news') }}">News</a>
-    <a href="#">Services</a>
+    <a href="{{ url('dashboard/request-quote') }}">Request Quote</a>
     <a href="#">Clients</a>
     <a href="{{ url('dashboard/languages') }}">Languages</a>
 </div>

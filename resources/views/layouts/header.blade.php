@@ -27,6 +27,11 @@
                         @endforeach
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('faq') }}">
+                        {{ trans('menu.faq', [], \Session::get('locale')) }}
+                    </a>
+                </li>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">

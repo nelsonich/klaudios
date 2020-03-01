@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Features;
 use App\Models\Languages;
+use App\Models\RequestQuote;
 use App\Models\StaticInformation;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\News;
@@ -17,12 +19,24 @@ class DashboardController extends Controller
     public static function index()
     {
         $user = Auth::user();
-        $users = User::where('role', 'user')->paginate(5);
-
+        $users = User::where('role', "!=", 'superadmin')->orderBy('id', 'desc')->paginate(5);
+        $roles = UserRole::all();
         return view('dashboard.home', [
             'user' => $user,
-            'users' => $users
+            'users' => $users,
+            'roles' => $roles,
         ]);
+    }
+
+    public function editUserData(Request $request)
+    {
+        $data = $request->except('_token');
+        $userId = $data['id'];
+        unset($data['id']);
+        User::find($userId)->update($data);
+
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
     }
 
     public static function getNews()
@@ -159,6 +173,12 @@ class DashboardController extends Controller
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();
+    }
+
+    public function getRequestQuote()
+    {
+        $requestQuotes = RequestQuote::paginate(10);
+        return view('dashboard.Pages.requestQuote', ['requestQuotes' => $requestQuotes]);
     }
 
     public function getFeatures()

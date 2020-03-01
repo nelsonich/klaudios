@@ -35,7 +35,7 @@ $(document).ready(function () {
                                                 <div class="comment_details">
                                                     <ul>
                                                         <li><i class="fa fa-calendar"></i> ${ value['created_at'] }</li>
-                                                        <li><i class="fa fa-pencil"></i> <span class="user">@${ value['get_commented_user']['user_name'] }</span></li>
+                                                        <li><i class="far fa-user"></i> <span class="user">@${ value['get_commented_user']['user_name'] }</span></li>
                                                     </ul>
                                                 </div>
                                                 <div class="comment_tools">
