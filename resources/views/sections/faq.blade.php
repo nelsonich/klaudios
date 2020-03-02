@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center" title="{{ trans('menu.faq', [], \Session::get('locale')) }}">{{ trans('menu.faq', [], \Session::get('locale')) }}</h1>
+                <h1 class="text-center" title="{{ trans('menu.frequentlyAskedQuestions', [], \Session::get('locale')) }}">{{ trans('menu.frequentlyAskedQuestions', [], \Session::get('locale')) }}</h1>
             </div>
         </div>
         <div class="accordion" id="accordionExample">

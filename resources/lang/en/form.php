@@ -4,6 +4,8 @@ return [
     'email' => 'E-Mail',
     'password' => 'Password',
     'confirmPassword' => 'Confirm Password',
+    'oldPassword' => 'Old Password',
+    'newPassword' => 'New Password',
     'username' => 'User Name',
     'lastname' => 'Last Name',
     'firstname' => 'First Name',
@@ -18,4 +20,8 @@ return [
     'submit' => 'Submit',
     'successfullyEdited' => 'Successfully edited',
     'requestQuote' => 'Request Quote',
+    'forgotPassword' => 'Forgot Your Password?',
+    'resetPassword' => 'Reset Password',
+    'eMailAddress' => 'E-Mail Address',
+    'sendPasswordResetLink' => 'Send Password Reset Link',
 ];

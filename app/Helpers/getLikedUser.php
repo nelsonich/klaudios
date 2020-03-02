@@ -10,7 +10,7 @@ class getLikedUser
     {
         $resUsers = "";
         foreach($item['getNewsLikesCounts'] as $user) {
-            $resUsers .= $user['getNewsLikedUser']['first_name'] . "<br/>";
+            $resUsers .= $user['getNewsLikedUser']['user_name'] . "<br/>";
         }
 
         return $resUsers;

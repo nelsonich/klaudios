@@ -74,7 +74,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link d-block" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ trans('form.forgotPassword', [], \Session::get('locale')) }}
                                     </a>
                                 @endif
                             </div>

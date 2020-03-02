@@ -50,8 +50,10 @@ Route::group([
         Route::post('/create-comment-news', 'HomeController@createCommentNews')->name('create-comment-news');
         Route::post('/like-comment-news', 'HomeController@likeCommentNews')->name('like-comment-news');
 
+        /* Change Profile Settings */
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::post('/edit-profile', 'HomeController@editProfile')->name('edit-profile');
+        Route::post('/edit-profile-password', 'HomeController@editProfilePassword')->name('edit-profile-password');
     });
 
     // SuperAdmin

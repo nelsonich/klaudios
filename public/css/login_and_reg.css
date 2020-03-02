@@ -9,7 +9,9 @@ div#registrationForm .card .card-header {
 }
 
 div#loginForm div.card,
-div#registrationForm div.card {
+div#registrationForm div.card,
+div#resetForm div.card,
+div#emailForm div.card {
     background: #e28585;
     width: 70%;
     margin: auto;
@@ -27,13 +29,17 @@ div#registrationForm form a {
 }
 
 div#loginForm form button,
-div#registrationForm form button {
+div#registrationForm form button,
+div#resetForm form button,
+div#emailForm form button {
     background-color: #e8a348;
 }
 
 @media screen and (max-width: 1000px) {
     div#loginForm div.card,
-    div#registrationForm div.card {
+    div#registrationForm div.card,
+    div#resetForm div.card,
+    div#emailForm div.card {
         width: 100%;
     }
     div#loginForm {

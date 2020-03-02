@@ -12,16 +12,16 @@ class StaticInformationTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('static_information')->delete();
-        
+
         \DB::table('static_information')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'logo' => 'klaudios.png',
-                'description' => '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia doloribus laboriosam facilis est tenetur esse saepe consequatur. Reprehenderit explicabo iste quisquam iure, provident cupiditate maiores beatae veniam eligendi accusamus excepturi?</p>',
+                'description' => '<p>Join the millions of people who organize life and work with Klaudios.</p>',
                 'place' => 'Armenia Abovyan',
                 'phone' => '093-33-55-86',
                 'email' => 'xachatryan.nelsonich@gmail.com',
@@ -32,7 +32,7 @@ class StaticInformationTableSeeder extends Seeder
                 'updated_at' => '2020-02-25 22:23:27',
             ),
         ));
-        
-        
+
+
     }
 }

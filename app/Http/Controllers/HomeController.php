@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LikeNews;
-use App\Models\News;
-use App\Models\NewsComment;
-use App\Models\NewsCommentLikes;
 use App\User;
-use http\Env\Response;
+use App\Models\News;
+use App\Models\LikeNews;
+use App\Models\NewsComment;
 use Illuminate\Http\Request;
+use App\Rules\MatchOldPassword;
+use App\Models\NewsCommentLikes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -115,6 +116,20 @@ class HomeController extends Controller
         $data = $request->except('_token');
         $user_id = Auth::id();
         User::find($user_id)->update($data);
+
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
+
+    public function editProfilePassword(Request $request)
+    {
+        $request->validate([
+            'oldPassword' => ['required', new MatchOldPassword],
+            'newPassword' => ['required'],
+            'confirmNewPassword' => ['same:newPassword'],
+        ]);
+
+        User::find(auth()->user()->id)->update(['password' => Hash::make($request->post('newPassword'))]);
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();

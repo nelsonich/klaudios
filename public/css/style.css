@@ -5,6 +5,10 @@ body {
     background-color: #f3f6f9;
 }
 
+::selection {
+    background-color: #e8a348;
+}
+
 :focus {
     outline: none;
 }

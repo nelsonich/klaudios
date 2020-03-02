@@ -4,6 +4,8 @@ return [
     'email' => 'Эл. почта',
     'password' => 'Пароль',
     'confirmPassword' => 'Подтвердите Пароль',
+    'oldPassword' => 'Старый пароль',
+    'newPassword' => 'Новый пароль',
     'username' => 'Имя пользователя',
     'lastname' => 'Фамилия',
     'firstname' => 'Имя',
@@ -18,4 +20,8 @@ return [
     'submit' => 'Отправлять',
     'successfullyEdited' => 'Успешно отредактировано',
     'requestQuote' => 'Запросить цену',
+    'forgotPassword' => 'Забыли свой пароль?',
+    'resetPassword' => 'Сброс пароля',
+    'eMailAddress' => 'Адрес электронной почты',
+    'sendPasswordResetLink' => 'Отправить ссылку для сброса пароля',
 ];
