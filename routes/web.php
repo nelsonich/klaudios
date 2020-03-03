@@ -30,6 +30,9 @@ View::composer('layouts.app', function($view)
 Route::get('/', 'StaticPages\HomePageController@index');
 Route::get('/lang/{locale}', 'StaticPages\HomePageController@lang');
 Route::get('/faq', 'StaticPages\HomePageController@faq');
+Route::get('/terms', 'StaticPages\HomePageController@terms');
+Route::get('/privacy', 'StaticPages\HomePageController@privacy');
+Route::get('/cookies', 'StaticPages\HomePageController@cookies');
 Route::post('/request-quote', 'StaticPages\HomePageController@requestQuote')->name('request-quote');
 
 Auth::routes();
@@ -69,6 +72,14 @@ Route::group([
             Route::post('/delete', 'Dashboard\DashboardController@deleteNews')->name('delete-news');
         });
 
+        // FAQ
+//        Route::group(['prefix' => "faq"], function () {
+//            Route::get('/', 'Dashboard\DashboardController@getFaq');
+//            Route::post('/add', 'Dashboard\DashboardController@addFaq')->name('add-faq');
+//            Route::post('/edit', 'Dashboard\DashboardController@editFaq')->name('edit-faq');
+//            Route::post('/delete', 'Dashboard\DashboardController@deleteFaq')->name('delete-faq');
+//        });
+
         // Home
         //About
         Route::group(['prefix' => "about"], function () {
@@ -97,6 +108,16 @@ Route::group([
         Route::group(['prefix' => "languages"], function () {
             Route::get('/', 'Dashboard\DashboardController@getLanguages');
             Route::post('/change-lang-status', 'Dashboard\DashboardController@editLangStatus')->name('change-lang-status');
+        });
+
+        //Terms
+        Route::group(['prefix' => "terms"], function () {
+            Route::get('/terms-and-conditions', 'Dashboard\DashboardController@getTerms');
+            Route::get('/privacy-policy', 'Dashboard\DashboardController@getPrivacy');
+            Route::get('/cookies-policy', 'Dashboard\DashboardController@getCookies');
+            Route::post('/edit-terms', 'Dashboard\DashboardController@editTerms')->name('edit-terms');
+            Route::post('/edit-privacy', 'Dashboard\DashboardController@editPrivacy')->name('edit-privacy');
+            Route::post('/edit-cookies', 'Dashboard\DashboardController@editCookies')->name('edit-cookies');
         });
     });
 });

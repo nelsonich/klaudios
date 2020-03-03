@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/requestQuote.js') }}"></script>
     <script src="{{ asset('js/News/likeNews.js') }}"></script>
+    <script src="{{ asset('js/registration/registr.js') }}"></script>
     @stack('scripts')
 
     <!-- Fonts -->

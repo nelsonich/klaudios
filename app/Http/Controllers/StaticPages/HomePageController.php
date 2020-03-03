@@ -6,6 +6,9 @@ use App\Models\About;
 use App\Models\Faq;
 use App\Models\Features;
 use App\Helpers\MailSender;
+use App\Models\Terms\CookiesPolicy;
+use App\Models\Terms\PrivacyPolicy;
+use App\Models\Terms\TermsAndConditions;
 use Illuminate\Http\Request;
 use App\Models\RequestQuote;
 use App\Models\StaticInformation;
@@ -70,6 +73,39 @@ class HomePageController extends Controller
         $faq = Faq::where('lang', $lang)->get();
         return view('sections.faq', [
             'faq' => $faq,
+        ]);
+    }
+
+    public function terms()
+    {
+        $lang = Session::get('locale');
+
+        if ($lang == null) $lang = 'en';
+        $terms = TermsAndConditions::where('lang', $lang)->first();
+        return view('sections.terms.terms', [
+            'terms' => $terms,
+        ]);
+    }
+
+    public function privacy()
+    {
+        $lang = Session::get('locale');
+
+        if ($lang == null) $lang = 'en';
+        $privacy = PrivacyPolicy::where('lang', $lang)->first();
+        return view('sections.terms.privacy', [
+            'privacy' => $privacy,
+        ]);
+    }
+
+    public function cookies()
+    {
+        $lang = Session::get('locale');
+
+        if ($lang == null) $lang = 'en';
+        $cookie = CookiesPolicy::where('lang', $lang)->first();
+        return view('sections.terms.cookies', [
+            'cookie' => $cookie,
         ]);
     }
 }

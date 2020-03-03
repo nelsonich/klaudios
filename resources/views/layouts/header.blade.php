@@ -27,6 +27,22 @@
                         @endforeach
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTerms" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ trans('menu.terms', [], \Session::get('locale')) }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownTerms">
+                        <a class="dropdown-item" href="{{ url('/terms') }}" title="{{ trans('menu.terms.terms', [], \Session::get('locale')) }}">
+                            {{ trans('menu.terms.terms', [], \Session::get('locale')) }}
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/privacy') }}" title="{{ trans('menu.terms.privacy', [], \Session::get('locale')) }}">
+                            {{ trans('menu.terms.privacy', [], \Session::get('locale')) }}
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/cookies') }}" title="{{ trans('menu.terms.cookies', [], \Session::get('locale')) }}">
+                            {{ trans('menu.terms.cookies', [], \Session::get('locale')) }}
+                        </a>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('faq') }}">
                         {{ trans('menu.faq', [], \Session::get('locale')) }}
@@ -53,6 +69,11 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(\Auth::user()->role == "superadmin")
+                                <a href="{{ url('/dashboard') }}" class="dropdown-item">
+                                    Dashboard
+                                </a>
+                            @endif
                             <a href="{{ url('home/profile') }}" class="dropdown-item">
                                 {{ trans('menu.profile', [], \Session::get('locale')) }}
                             </a>

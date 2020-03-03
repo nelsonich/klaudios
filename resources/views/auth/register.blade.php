@@ -140,9 +140,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-10 col-sm-10 col-10 d-flex justify-content-end mx-auto">
+                                <input id="termsAndConditions"
+                                       type="checkbox"
+                                       class="mr-2"
+                                       name="termsAndConditions"
+                                       autocomplete="termsAndConditions"
+                                       style="align-self: center;"/>
+                                <label for="termsAndConditions" class="mb-0">
+                                    I consent with Klaudios <a style="text-decoration: underline;" target="_blank" href="{{ url('terms') }}">Terms & Conditions</a>
+                                </label>
+                            </div>
+                            <p class="mx-auto text-center">Your personal data will be processed in accordance with our <a style="text-decoration: underline;" target="_blank" href="{{ url('privacy') }}">Privacy Policy</a>.</p>
+                        </div>
+
                         <div class="form-group row mb-0 text-center">
                             <div class="col-md">
-                                <button type="submit" class="btn btn-warning">
+                                <button type="submit" class="btn btn-warning" disabled="true">
                                     {{ trans('menu.registration', [], \Session::get('locale')) }}
                                 </button>
                             </div>

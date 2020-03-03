@@ -12,4 +12,8 @@ return [
     'language' => 'Language',
     'faq' => 'FAQ',
     'frequentlyAskedQuestions' => 'Frequently Asked Questions',
+    'terms' => 'Terms',
+    'terms.terms' => 'Terms And Conditions',
+    'terms.privacy' => 'Privacy Policy',
+    'terms.cookies' => 'Cookies Policy',
 ];

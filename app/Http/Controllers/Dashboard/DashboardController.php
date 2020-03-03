@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Faq;
 use App\Models\Features;
 use App\Models\Languages;
 use App\Models\RequestQuote;
 use App\Models\StaticInformation;
+use App\Models\Terms\CookiesPolicy;
+use App\Models\Terms\PrivacyPolicy;
+use App\Models\Terms\TermsAndConditions;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
 use App\User;
@@ -210,5 +214,53 @@ class DashboardController extends Controller
         $lang->status = $staus;
         $lang->save();
         return response()->json('ok');
+    }
+
+    public function getFaq()
+    {
+        $faq = Faq::where('lang', 'en')->paginate(5);
+        return view('dashboard.Pages.StaticPages.faq', ['faq' => $faq]);
+    }
+
+    public function getTerms()
+    {
+        $terms = TermsAndConditions::all();
+        return view('dashboard.Pages.terms.terms', ['terms' => $terms]);
+    }
+
+    public function editTerms(Request $request)
+    {
+        $data = $request->except('_token');
+        TermsAndConditions::find($data['id'])->update($data);
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
+
+    public function getPrivacy()
+    {
+        $privacy = PrivacyPolicy::all();
+        return view('dashboard.Pages.terms.privacy', ['privacy' => $privacy]);
+    }
+
+    public function editPrivacy(Request $request)
+    {
+        $data = $request->except('_token');
+        PrivacyPolicy::find($data['id'])->update($data);
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
+
+    public function getCookies()
+    {
+        $cookies = CookiesPolicy::all();
+        return view('dashboard.Pages.terms.cookies', ['cookies' => $cookies]);
+    }
+
+    public function editCookies(Request $request)
+    {
+        $data = $request->except('_token');
+        CookiesPolicy::find($data['id'])->update($data);
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
     }
 }

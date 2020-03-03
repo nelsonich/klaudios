@@ -8,13 +8,24 @@
           Static Pages
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{{ url('dashboard/about') }}">About</a>
-          <a class="dropdown-item" href="{{ url('dashboard/features') }}">Features</a>
+            <a class="dropdown-item" href="{{ url('dashboard/about') }}">About</a>
+            <a class="dropdown-item" href="{{ url('dashboard/features') }}">Features</a>
+{{--            <a class="dropdown-item" href="{{ url('dashboard/faq') }}">FAQ</a>--}}
             <a class="dropdown-item" href="{{ url('dashboard/static-information') }}">Static Information</a>
         </div>
-      </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButtonTerms" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Terms
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonTerms">
+            <a class="dropdown-item" href="{{ url('dashboard/terms/terms-and-conditions') }}">Terms</a>
+            <a class="dropdown-item" href="{{ url('dashboard/terms/privacy-policy') }}">Privacy Policy</a>
+            <a class="dropdown-item" href="{{ url('dashboard/terms/cookies-policy') }}">Cookies Policy</a>
+        </div>
+    </div>
     <a href="{{ url('dashboard/news') }}">News</a>
     <a href="{{ url('dashboard/request-quote') }}">Request Quote</a>
-    <a href="#">Clients</a>
     <a href="{{ url('dashboard/languages') }}">Languages</a>
 </div>
