@@ -57,6 +57,14 @@ Route::group([
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::post('/edit-profile', 'HomeController@editProfile')->name('edit-profile');
         Route::post('/edit-profile-password', 'HomeController@editProfilePassword')->name('edit-profile-password');
+
+        /* Game Accept Modal */
+        Route::post('/acceptNextGameModal', 'Game\GameController@acceptNextGameModal')->name('acceptNextGameModal');
+
+        /* Games */
+        Route::get('/games/{complexity_id}', 'Game\GameController@getGamesCategories');
+        Route::get('/game-category/{game_category_id}', 'Game\GameController@getGames');
+        Route::post('/select-answer', 'Game\GameController@selectAnswer')->name('select-answer');
     });
 
     // SuperAdmin
@@ -70,6 +78,14 @@ Route::group([
             Route::post('/add', 'Dashboard\DashboardController@addNews')->name('add-news');
             Route::post('/edit', 'Dashboard\DashboardController@editNews')->name('edit-news');
             Route::post('/delete', 'Dashboard\DashboardController@deleteNews')->name('delete-news');
+        });
+
+        Route::group(['prefix' => "games"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getGames');
+            Route::post('/add', 'Dashboard\DashboardController@addGame')->name('add-game');
+            Route::post('/edit', 'Dashboard\DashboardController@editGame')->name('edit-game');
+            Route::post('/change-right-answer', 'Dashboard\DashboardController@changeRightAnswer')->name('change-right-answer');
+//            Route::post('/delete', 'Dashboard\DashboardController@deleteNews')->name('delete-news');
         });
 
         // FAQ

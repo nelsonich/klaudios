@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\NewIdea;
 use App\User;
 use App\Helpers\MailSender;
 use App\Http\Controllers\Controller;
@@ -72,7 +73,8 @@ class RegisterController extends Controller
         MailSender::sender($data);
         MailSender::sendToAdmin($data, 'emails.Admin.registrationEmail');
 
-        return User::create([
+
+        $userId = User::create([
             'role' => "user",
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -80,5 +82,11 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        NewIdea::create([
+            "user_id" => $userId->id
+        ]);
+
+        return $userId;
     }
 }

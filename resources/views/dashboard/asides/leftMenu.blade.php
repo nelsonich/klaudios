@@ -28,4 +28,5 @@
     <a href="{{ url('dashboard/news') }}">News</a>
     <a href="{{ url('dashboard/request-quote') }}">Request Quote</a>
     <a href="{{ url('dashboard/languages') }}">Languages</a>
+    <a href="{{ url('dashboard/games') }}">Games</a>
 </div>

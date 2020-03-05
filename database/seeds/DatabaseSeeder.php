@@ -25,5 +25,11 @@ class DatabaseSeeder extends Seeder
         $this->call(CookiesPoliciesTableSeeder::class);
         $this->call(PrivacyPoliciesTableSeeder::class);
         $this->call(TermsAndConditionsTableSeeder::class);
+        $this->call(NewIdeasTableSeeder::class);
+        $this->call(GameCategoriesTableSeeder::class);
+        $this->call(GameAnswersTableSeeder::class);
+        $this->call(GamesTableSeeder::class);
+        $this->call(RightAnswersTableSeeder::class);
+        $this->call(GameComplexitiesTableSeeder::class);
     }
 }

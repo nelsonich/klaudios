@@ -1,0 +1,138 @@
+body {
+    background-image: url("../../images/Games/bg.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+nav {
+    background-color: #50c4ed !important;
+}
+
+div.gameDaska p {
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+div.gameDaska {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff;
+    border: 3px solid #140c8c;
+    border-radius: 10px;
+}
+
+div.gameDaska div.answer {
+    border: 3px solid #140c8c;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 100px;
+    font-size: 25px;
+    font-variant: all-petite-caps;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+div.answer.selected {
+    border: 3px solid #24b61b !important;
+}
+
+div.answer.wrongAnswer {
+    border: 3px solid red !important;
+    opacity: .7;
+    user-select: none !important;
+    pointer-events: none !important;
+}
+
+span.counts {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: medium;
+}
+
+span.finished {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 40px;
+    color: green;
+}
+
+div.answer.rightAnswer {
+    border: 3px solid #24b61b !important;
+}
+
+div.gameComplexity,
+div.gameCategory {
+    background: #387adf;
+    border: 3px solid #140c8c;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+div.gameComplexity a.nav-link {
+    color: #000;
+    background-color: #fff !important;
+    font-size: larger;
+    font-family: cursive;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.gameComplexity a.nav-link.active {
+    background: #50c4ed !important;
+}
+
+.categoriesGame {
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    min-height: 150px;
+    border: 3px solid;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 5px;
+    transition: all 1s;
+}
+
+.categoriesGame:hover,
+div.answer:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.categoriesGame h1 {
+    color: #000;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: unset;
+    font-variant: all-small-caps;
+}
+
+
+/* Finish Modal */
+div#finish {
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 20px 13px 20px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    background: -moz-linear-gradient(#ffffff, #cccccc);
+    background: -webkit-linear-gradient(#ffffff, #cccccc);
+    background: -o-linear-gradient(#ffffff, #cccccc);
+    box-shadow: 0 0 10px #000000;
+    -moz-box-shadow: 0 0 10px #000000;
+    -webkit-box-shadow: 0 0 10px #000000;
+    display: none;
+}

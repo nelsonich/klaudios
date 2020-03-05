@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Faq;
 use App\Models\Features;
+use App\Models\Games\Game;
+use App\Models\Games\GameAnswer;
+use App\Models\Games\GameCategory;
+use App\Models\Games\RightAnswer;
+use App\Models\Games\UserRightAnswer;
 use App\Models\Languages;
 use App\Models\RequestQuote;
 use App\Models\StaticInformation;
@@ -59,7 +64,7 @@ class DashboardController extends Controller
             'description' => 'required',
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $files = $request->file('image');
             $destinationPath = 'images/news/'; // upload path
             $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
@@ -85,7 +90,7 @@ class DashboardController extends Controller
             'description' => 'required',
         ]);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $files = $request->file('image');
             $destinationPath = 'images/news/'; // upload path
             $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
@@ -161,7 +166,7 @@ class DashboardController extends Controller
             'description' => 'required',
         ]);
 
-        if($request->hasFile('logo')) {
+        if ($request->hasFile('logo')) {
             $files = $request->file('logo');
             $destinationPath = 'images/'; // upload path
             $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
@@ -262,5 +267,103 @@ class DashboardController extends Controller
         CookiesPolicy::find($data['id'])->update($data);
         $request->session()->flash('status', 'edit');
         return redirect()->back();
+    }
+
+
+    /* Games */
+    public function getGames()
+    {
+        $categories = GameCategory::all();
+        $games = Game::with('getGameAnswers', 'getGameRightAnswer')->paginate(10);
+
+        return view('dashboard.Pages.games', [
+            'categories' => $categories,
+            'games' => $games,
+        ]);
+    }
+
+    public function addGame(Request $request)
+    {
+        $request->validate([
+            'question' => 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $files = $request->file('image');
+            $destinationPath = 'images/news/'; // upload path
+            $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $image);
+
+        } else {
+            $image = null;
+        }
+
+        $data = $request->except('_token');
+        $data['image'] = $image;
+        Game::create($data);
+
+        $request->session()->flash('status', 'add');
+        return redirect()->back();
+    }
+
+    public function editGame(Request $request)
+    {
+        $images = array();
+        $data = $request->except('_token');
+        $gameId = $data['id'];
+        if ($files = $request->file('image')) {
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+                $file->move('images/Games/answers/', $name);
+                $images[] = $name;
+            }
+        }
+        if (!empty($images) && !empty($data['answer'])) {
+            foreach ($images as $key => $item) {
+                GameAnswer::create([
+                    "answer" => $data['answer'][$key],
+                    "image" => $item,
+                    "game_id" => $gameId,
+                ]);
+            }
+        } elseif(!empty($images) && empty($data['answer'])) {
+            foreach ($images as $item) {
+                GameAnswer::create([
+                    "image" => $item,
+                    "game_id" => $gameId,
+                ]);
+            }
+        } elseif(empty($images) && !empty($data['answer'])) {
+            foreach ($data['answer'] as $item) {
+                GameAnswer::create([
+                    "answer" => $item,
+                    "game_id" => $gameId,
+                ]);
+            }
+        }
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
+
+    public function changeRightAnswer(Request $request)
+    {
+        $gameId = $request->post('gameId');
+        $answerId = $request->post('answerId');
+        $isExists = RightAnswer::where('game_id', $gameId)->exists();
+        UserRightAnswer::where('game_id', $gameId)->update([
+            "answer_id" => $answerId,
+        ]);
+        if (!$isExists) {
+            RightAnswer::create([
+                "game_id" => $gameId,
+                "answer_id" => $answerId
+            ]);
+        } else {
+            RightAnswer::where('game_id', $gameId)->update([
+                "answer_id" => $answerId,
+            ]);
+        }
+
+        return response()->json('ok');
     }
 }

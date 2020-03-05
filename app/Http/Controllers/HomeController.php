@@ -32,8 +32,10 @@ class HomeController extends Controller
     public function index()
     {
         $news = News::with('getNewsLikes', 'getNewsLikesCounts')->paginate(5);
-//        dd($news);
-        return view('home', ['news' => $news,]);
+        $user_id = Auth::id();
+        $user = User::where('id', $user_id)->with('getAuthGameStatus')->first();
+
+        return view('home', ['news' => $news,'user' => $user]);
     }
 
     public function newsItem($id)

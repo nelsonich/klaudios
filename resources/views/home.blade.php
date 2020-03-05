@@ -23,5 +23,10 @@
 
     {{-- News --}}
     @include('news.news')
+
+    {{-- New Idea Game include game accepting modal--}}
+    @if($user['getAuthGameStatus']->is_game === 0)
+        @include('Games.gameAcceptModal')
+    @endif
 </div>
 @endsection

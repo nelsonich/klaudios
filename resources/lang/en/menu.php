@@ -16,4 +16,5 @@ return [
     'terms.terms' => 'Terms And Conditions',
     'terms.privacy' => 'Privacy Policy',
     'terms.cookies' => 'Cookies Policy',
+    'games' => 'Games',
 ];

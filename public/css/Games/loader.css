@@ -1,0 +1,86 @@
+/* Editable */
+/* Probably shouldn't edit, but go crazy. */
+/* Sassery */
+.spinner {
+    position: relative;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    width: 2em;
+}
+.spinner, .spinner div {
+    transform-origin: 50% 50%;
+}
+.spinner div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.spinner:before, .spinner:after, .spinner div:before, .spinner div:after {
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    content: "";
+    background: #009ddc;
+    border-radius: 100%;
+    width: 0.5em;
+    height: 0.5em;
+    position: absolute;
+}
+.spinner:before, .spinner div:before {
+    animation-name: orbBounceBefore;
+    top: -0.25em;
+    left: -0.25em;
+}
+.spinner:after, .spinner div:after {
+    animation-name: orbBounceAfter;
+    top: -0.25em;
+    right: -0.25em;
+}
+.spinner-a {
+    transform: rotate(60deg) translateY(0);
+}
+.spinner-b {
+    transform: rotate(120deg) translateY(0);
+}
+@keyframes orbBounceBefore {
+    60% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    }
+    80% {
+        animation-timing-function: cubic-bezier(0, 1.11, 0.7, 1.43);
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes orbBounceAfter {
+    60% {
+        animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+        transform: translateX(0);
+    }
+    80% {
+        animation-timing-function: cubic-bezier(0, 1.11, 0.7, 1.43);
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+.spinner-a:before {
+    animation-delay: 166.6666666667ms;
+}
+.spinner-b:before {
+    animation-delay: 333.3333333333ms;
+}
+.spinner:after {
+    animation-delay: 500ms;
+}
+.spinner-a:after {
+    animation-delay: 666.6666666667ms;
+}
+.spinner-b:after {
+    animation-delay: 833.3333333333ms;
+}

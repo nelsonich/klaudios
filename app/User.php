@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\NewIdea;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +22,7 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'user_name',
-        'email', 
+        'email',
         'password',
     ];
 
@@ -43,10 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function getAuth()
+    public function getAuthGameStatus()
     {
-        $asd = Auth::id();
-        dd($asd);
-        return Auth::id();
+        return $this->hasOne(NewIdea::class, 'user_id', 'id');
     }
 }

@@ -147,3 +147,20 @@ span.threePoints {
         font-size: 18px;
     }
 }
+
+
+/* Games */
+div.gameAnswers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+div.rightAnswer {
+    border: 3px solid green !important;
+}

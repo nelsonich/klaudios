@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/news/news.css') }}">
     <link rel="stylesheet" href="{{ asset('css/socButtons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/news/newsComments.css') }}">
+    @stack('css')
 </head>
 <body>
     <div id="app">
