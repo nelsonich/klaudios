@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    setTimeout(() => {
+    // setTimeout(() => {
         $(".spinner").addClass('d-none');
         $("#pills-tabContent .tab-pane").removeClass('d-none');
-    }, 5000);
+    // }, 5000);
 });

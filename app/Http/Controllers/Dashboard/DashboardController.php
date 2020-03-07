@@ -9,6 +9,7 @@ use App\Models\Features;
 use App\Models\Games\Game;
 use App\Models\Games\GameAnswer;
 use App\Models\Games\GameCategory;
+use App\Models\Games\GameComplexity;
 use App\Models\Games\RightAnswer;
 use App\Models\Games\UserRightAnswer;
 use App\Models\Languages;
@@ -290,7 +291,7 @@ class DashboardController extends Controller
 
         if ($request->hasFile('image')) {
             $files = $request->file('image');
-            $destinationPath = 'images/news/'; // upload path
+            $destinationPath = 'images/Games/games/'; // upload path
             $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $image);
 
@@ -364,6 +365,77 @@ class DashboardController extends Controller
             ]);
         }
 
+        return response()->json('ok');
+    }
+
+    public function getGameCategory()
+    {
+        $categories = GameCategory::with('getCategoryComplexity')->paginate(10);
+
+        $complexities = GameComplexity::all();
+        return view('dashboard.Pages.gameCategories', [
+            'categories' => $categories,
+            'complexities' => $complexities,
+        ]);
+    }
+
+    public function addGameCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'complexity_id' => 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $files = $request->file('image');
+            $destinationPath = 'images/news/'; // upload path
+            $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $image);
+        } else {
+            $image = "warm-up.png";
+        }
+
+        $data = $request->except('_token');
+        $data['image'] = $image;
+
+        GameCategory::create($data);
+
+        $request->session()->flash('status', 'add');
+        return redirect()->back();
+    }
+
+    public function editGameCategory(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'complexity_id' => 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $files = $request->file('image');
+            $destinationPath = 'images/news/'; // upload path
+            $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $image);
+        } else {
+            $image = "warm-up.png";
+        }
+
+        $data = $request->except('_token');
+        $data['image'] = $image;
+
+        GameCategory::where("id", $data['id'])->update($data);
+
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
+
+    public function editGameCategoryStatus(Request $request)
+    {
+        $catId = $request->post('catId');
+        $cat = GameCategory::find($catId);
+        $staus = $cat->status == 1 ? 0 : 1;
+        $cat->status = $staus;
+        $cat->save();
         return response()->json('ok');
     }
 }

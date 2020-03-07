@@ -16,6 +16,6 @@ class GameComplexity extends Model
 
     public function getGameCategories()
     {
-        return $this->hasMany(GameCategory::class, 'complexity_id', 'id')->with('getCategoryGames');
+        return $this->hasMany(GameCategory::class, 'complexity_id', 'id')->with('getCategoryGames')->where('status', 1);
     }
 }

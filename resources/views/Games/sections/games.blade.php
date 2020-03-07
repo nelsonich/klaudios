@@ -1,15 +1,11 @@
 <div class="row gameDaska">
     <ul class="nav nav-tabs w-100" id="myTab" role="tablist">
-        @php
-            $step = 0;
-        @endphp
+        @php($step = 0)
         @foreach($games['getCategoryGames'] as $key => $game)
             <li class="nav-item">
                 @if($game['getUserGameRightAnswer'])
                     <a class="nav-link" id="game{{ $game->id }}-tab" data-toggle="tab" href="#game{{ $game->id }}" role="tab" aria-controls="game{{ $game->id }}" aria-selected="false">{{ $key+1 }}</a>
-                    @php
-                        $step++;
-                    @endphp
+                    @php($step++)
                 @else
                     <a class="nav-link {{ $key == $step ? "active" : "disabled" }}" id="game{{ $game->id }}-tab" data-toggle="tab" href="#game{{ $game->id }}" role="tab" aria-controls="game{{ $game->id }}" aria-selected="{{ $key == $step ? "true" : "false" }}">{{ $key+1 }}</a>
                 @endif
@@ -26,7 +22,9 @@
                         <span class="counts">Вопрос решён с <strong>{{ count($game['getUserGameWrongAnswer']) }}</strong> попытки</span>
                     @endif
                     {!! $game->question !!}
-
+                    @if($game->image)
+                        <img src="{{ asset('images/Games/games/' . $game->image) }}" alt="Answer" class="img-fluid">
+                    @endif
                     <div class="row mt-5 justify-content-center">
                         @foreach($game['getGameAnswers'] as $answer)
                             <div class="col-md-2 answer m-2 {{ $answer->id == $game['getUserGameRightAnswer']['answer_id'] ? "selected rightAnswer" : "wrongAnswer" }}" style="pointer-events: none !important;" data-answerId="{{ $answer->id }}" data-gameId="{{ $game->id }}">
@@ -41,7 +39,9 @@
             @else
                 <div class="tab-pane p-5 fade {{ $key == $step ? "show active" : "" }}" id="game{{ $game->id }}" role="tabpanel" aria-labelledby="game{{ $game->id }}-tab">
                     {!! $game->question !!}
-
+                    @if($game->image)
+                        <img src="{{ asset('images/Games/games/' . $game->image) }}" alt="Answer" class="img-fluid">
+                    @endif
                     <div class="row mt-5 justify-content-center">
                         @foreach($game['getGameAnswers'] as $answer)
                             <div class="col-md-2 answer m-2" data-answerId="{{ $answer->id }}" data-gameId="{{ $game->id }}">

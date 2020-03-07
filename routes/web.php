@@ -85,7 +85,13 @@ Route::group([
             Route::post('/add', 'Dashboard\DashboardController@addGame')->name('add-game');
             Route::post('/edit', 'Dashboard\DashboardController@editGame')->name('edit-game');
             Route::post('/change-right-answer', 'Dashboard\DashboardController@changeRightAnswer')->name('change-right-answer');
-//            Route::post('/delete', 'Dashboard\DashboardController@deleteNews')->name('delete-news');
+        });
+
+        Route::group(['prefix' => "games-categories"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getGameCategory');
+            Route::post('/add', 'Dashboard\DashboardController@addGameCategory')->name('add-gameCategory');
+            Route::post('/edit', 'Dashboard\DashboardController@editGameCategory')->name('edit-gameCategory');
+            Route::post('/edit-category-status', 'Dashboard\DashboardController@editGameCategoryStatus')->name('edit-category-status');
         });
 
         // FAQ

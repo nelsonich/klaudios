@@ -18,4 +18,9 @@ class GameCategory extends Model
     {
         return $this->hasMany(Game::class, 'game_category_id', 'id')->with('getGameAnswers', 'getUserGameRightAnswer', 'getUserGameWrongAnswer');
     }
+
+    public function getCategoryComplexity()
+    {
+        return $this->hasOne(GameComplexity::class, 'id', 'complexity_id');
+    }
 }

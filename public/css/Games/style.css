@@ -58,8 +58,16 @@ span.finished {
     position: absolute;
     top: 0;
     right: 10px;
-    font-size: 40px;
-    color: green;
+    font-size: 30px;
+    color: white;
+    background: green;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div.answer.rightAnswer {
@@ -102,13 +110,23 @@ div.gameComplexity a.nav-link.active {
     transition: all 1s;
 }
 
+.categoriesGame .catBG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.4);
+}
+
 .categoriesGame:hover,
 div.answer:hover {
     transform: scale(1.1, 1.1);
 }
 
 .categoriesGame h1 {
-    color: #000;
+    color: #fff;
     font-weight: bold;
     font-size: 50px;
     font-family: unset;

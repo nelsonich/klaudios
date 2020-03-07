@@ -1,7 +1,7 @@
 $(document).ready(function () {
     if ($('a.active').length === 0) {
         let menuItems = $('a.nav-link');
-        console.log(menuItems);
+
         let endAnswer = menuItems.length - 1;
         menuItems.eq(endAnswer).addClass('active');
         menuItems.eq(endAnswer).attr('aria-selected', true);

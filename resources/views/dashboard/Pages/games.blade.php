@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-{{--                        <th scope="col">Image</th>--}}
+                        <th scope="col">Image</th>
                         <th scope="col">Question</th>
                         <th scope="col">Answers</th>
                         <th scope="col">Edit</th>
@@ -23,7 +23,12 @@
                     @foreach ($games as $game)
                         <tr>
                             <th scope="row">{{ $game->id }}</th>
-                            <th scope="row" style="width: 300px;">{!! $game->question !!}</th>
+                            <th scope="row">
+                                @if($game->image)
+                                    <img src="{{ asset('images/Games/games/' . $game->image) }}" alt="Image" class="w-75">
+                                @endif
+                            </th>
+                            <th scope="row" title="{!! $game->question !!}">{!! \App\Helpers\TextLimit::limit($game->question, 20) !!}</th>
                             <th scope="row">
                                 @if(!$game['getGameAnswers']->isEmpty())
                                     <div class="row justify-content-center">
@@ -210,7 +215,7 @@
                                     </div>
                                 </div>
                             </div>--}}
-                            {{--<div class="row">
+                            <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -222,7 +227,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>--}}
+                            </div>
                             <div class="row">
                                 <label for="editor">Question</label>
                                 <textarea class="form-control editor" name="question">
@@ -234,11 +239,11 @@
                                 <div class="col-md-12 col-sm-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect">Category</label>
+                                            <label class="input-group-text" for="inputGroupSelectGameCategory">Category</label>
                                         </div>
-                                        <select class="custom-select" name="game_category_id" id="inputGroupSelect" aria-label="Example select with button addon">
+                                        <select class="custom-select" name="game_category_id" id="inputGroupSelectGameCategory" aria-label="Example select with button addon">
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}" {{ $category->id == 1 ? "selected" : "" }}>{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -266,6 +271,5 @@
             </div>
         </div>
     </div>
-@endsection
-
 @include('dashboard.layouts.messages')
+@endsection

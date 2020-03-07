@@ -35,6 +35,5 @@
             </table>
         </div>
     </div>
-@endsection
-
 @include('dashboard.layouts.messages')
+@endsection
