@@ -26,7 +26,6 @@ View::composer('layouts.app', function($view)
 });
 
 
-
 Route::get('/', 'StaticPages\HomePageController@index');
 Route::get('/lang/{locale}', 'StaticPages\HomePageController@lang');
 Route::get('/faq', 'StaticPages\HomePageController@faq');
