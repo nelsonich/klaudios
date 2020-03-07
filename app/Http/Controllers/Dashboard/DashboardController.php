@@ -413,7 +413,7 @@ class DashboardController extends Controller
 
         if ($request->hasFile('image')) {
             $files = $request->file('image');
-            $destinationPath = 'images/news/'; // upload path
+            $destinationPath = 'images/Games/categories/'; // upload path
             $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $image);
         } else {
