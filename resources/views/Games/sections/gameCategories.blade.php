@@ -20,7 +20,7 @@
                                     @if($categoryGame->finish)
                                         <i class="far fa-check-circle"></i>
                                     @else
-                                        <em style="font-size: initial;">{{ count($categoryGame['getCategoryGames']) }} / {{ $step }}</em>
+                                        <em style="font-size: small;">{{ count($categoryGame['getCategoryGames']) }} / {{ $step }}</em>
                                     @endif
                                 </span>
                                 <div class="catBG">

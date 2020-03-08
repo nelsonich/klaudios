@@ -243,7 +243,7 @@
                                         </div>
                                         <select class="custom-select" name="game_category_id" id="inputGroupSelectGameCategory" aria-label="Example select with button addon">
                                             @foreach($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name }} ({{ $category['getCategoryComplexity']['name'] }})</option>
                                             @endforeach
                                         </select>
                                     </div>
