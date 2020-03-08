@@ -100,7 +100,7 @@ class GameController extends Controller
 
     public function getRating()
     {
-        $users = User::where('role', "!=", "superadmin")->with('getGameStars')->get();
+        $users = User::with('getGameStars')->get();
 
         foreach ($users as $user) {
             if ($user['getGameStars']) {
