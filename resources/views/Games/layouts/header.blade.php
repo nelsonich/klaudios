@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-sm pt-0 pb-0">
     <div class="container">
         <a class="navbar-brand p-0" href="{{ url('/home/games/1') }}">
-            <img src="{{ asset('images/Games/logo/pinterest_profile_image.png') }}" alt="{{ config('app.name', 'KLAUDIOS') }}" class="logo w-25" />
+            <img src="{{ asset('images/Games/logo/pinterest_profile_image.png') }}" alt="{{ config('app.name', 'KLAUDIOS') }}" class="logo w-25" style="width: 80px !important; height: 80px;" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
