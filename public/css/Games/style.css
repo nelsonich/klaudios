@@ -201,3 +201,10 @@ table#rating span.stars {
 table#rating tr.active {
     background-color: hsla(0,0%,100%,.075) !important;
 }
+
+
+@media screen and (max-width: 300px){
+    .categoriesGame h1 {
+        font-size: 30px;
+    }
+}
