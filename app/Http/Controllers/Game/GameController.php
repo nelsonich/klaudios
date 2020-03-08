@@ -10,6 +10,7 @@ use App\Models\Games\RightAnswer;
 use App\Models\Games\UserRightAnswer;
 use App\Models\Games\UserWrongAnswer;
 use App\Models\NewIdea;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,7 @@ class GameController extends Controller
             $item->isSelected = false;
             if ($item->id == $complexity_id) {
                 $item->isSelected = true;
+                session()->put('complexity_id', $complexity_id);
             }
 
             foreach ($item['getGameCategories'] as $category) {
@@ -85,5 +87,22 @@ class GameController extends Controller
             }
         }
         return response()->json($isAnswerTrue);
+    }
+
+    public function getRating()
+    {
+        $users = User::where('role', "!=", "superadmin")->with('getUsersRightAnswers', 'getUsersWrongAnswers')->get();
+        foreach ($users as $user) {
+            if (!$user['getUsersRightAnswers']->isEmpty()) {
+                $gamers['user'] = $user;
+                $gamers['rightAnswersCount'] = count($user['getUsersRightAnswers']);
+                $sortGamers[] = $gamers;
+            }
+        }
+
+        $sortByRightAnswersCount = collect($sortGamers)->sortBy('rightAnswersCount')->reverse()->toArray();
+
+
+        return view('Games.rating', ['sortByRightAnswersCount' => $sortByRightAnswersCount]);
     }
 }

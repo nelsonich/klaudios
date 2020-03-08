@@ -154,3 +154,28 @@ div#finish {
     -webkit-box-shadow: 0 0 10px #000000;
     display: none;
 }
+
+
+table#rating tr th  {
+    vertical-align: middle;
+}
+
+table#rating tr  {
+    height: 95px;
+}
+
+table#rating caption  {
+    caption-side: top;
+    color: #f8fafc;
+    background-color: #0277bd;
+    border: 2px solid;
+    border-radius: 5px;
+    text-align: center;
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+table#rating tr.active {
+    background-color: hsla(0,0%,100%,.075) !important;
+}

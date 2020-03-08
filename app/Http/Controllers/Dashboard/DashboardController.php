@@ -411,19 +411,22 @@ class DashboardController extends Controller
             'complexity_id' => 'required',
         ]);
 
+        $data = $request->except('_token');
+
+        $cat = GameCategory::find($data['id']);
+
         if ($request->hasFile('image')) {
             $files = $request->file('image');
             $destinationPath = 'images/Games/categories/'; // upload path
             $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $image);
         } else {
-            $image = "warm-up.png";
+            $image = $cat->image;
         }
 
-        $data = $request->except('_token');
         $data['image'] = $image;
 
-        GameCategory::where("id", $data['id'])->update($data);
+        $cat->update($data);
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();

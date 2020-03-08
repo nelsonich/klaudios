@@ -24,6 +24,10 @@
                         <a href="{{ url('home') }}" class="dropdown-item">
                             {{ trans('menu.home', [], \Session::get('locale')) }}
                         </a>
+
+                        <a href="{{ url('/home/rating') }}" class="dropdown-item">
+                            {{ trans('menu.rating', [], \Session::get('locale')) }}
+                        </a>
                     </div>
                 </li>
             </ul>

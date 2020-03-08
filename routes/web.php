@@ -64,6 +64,7 @@ Route::group([
         Route::get('/games/{complexity_id}', 'Game\GameController@getGamesCategories');
         Route::get('/game-category/{game_category_id}', 'Game\GameController@getGames');
         Route::post('/select-answer', 'Game\GameController@selectAnswer')->name('select-answer');
+        Route::get('/rating', 'Game\GameController@getRating');
     });
 
     // SuperAdmin

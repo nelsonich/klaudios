@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Models\Games\RightAnswer;
+use App\Models\Games\UserRightAnswer;
+use App\Models\Games\UserWrongAnswer;
 use App\Models\NewIdea;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,5 +50,15 @@ class User extends Authenticatable
     public function getAuthGameStatus()
     {
         return $this->hasOne(NewIdea::class, 'user_id', 'id');
+    }
+
+    public function getUsersRightAnswers()
+    {
+        return $this->hasMany(UserRightAnswer::class, 'user_id', 'id');
+    }
+
+    public function getUsersWrongAnswers()
+    {
+        return $this->hasMany(UserWrongAnswer::class, 'user_id', 'id');
     }
 }
