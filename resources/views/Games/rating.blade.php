@@ -16,18 +16,24 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Stars</th>
                     <th scope="col">Rating</th>
                 </tr>
                 </thead>
                 <tbody>
                 @php($step = 0)
-                @foreach($sortByRightAnswersCount as $key => $item)
+                @foreach($sortByStarsCount as $key => $item)
                     @php($step++)
                     <tr class="{{ $item['user']['id'] === \Auth::id() ? "active" : "" }}">
-                        <th scope="row">{{ $item['user']['id'] }}</th>
+                        <th scope="row">{{ $step }}</th>
                         <th scope="row">{{ $item['user']['first_name'] }}</th>
                         <th scope="row">{{ $item['user']['last_name'] }}</th>
                         <th scope="row">{{ $item['user']['email'] }}</th>
+                        <th scope="row" class="position-relative">
+                            <span class="stars">
+                                {{ $item['user']['getGameStars']['stars'] }}
+                            </span>
+                        </th>
                         <th scope="row">
                             @switch($step)
                                 @case(1)

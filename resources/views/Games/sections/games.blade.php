@@ -17,8 +17,14 @@
             @if($game['getUserGameRightAnswer'])
                 <div class="tab-pane p-5 fade" id="game{{ $game->id }}" role="tabpanel" aria-labelledby="game{{ $game->id }}-tab">
                     @if($game['getUserGameWrongAnswer']->isEmpty())
+                        <span class="stars">
+                            {{ count($game['getGameAnswers']) }}
+                        </span>
                         <span class="counts">Вопрос решён сразу</span>
                     @else
+                        <span class="stars">
+                            {{ count($game['getGameAnswers']) - count($game['getUserGameWrongAnswer']) }}
+                        </span>
                         <span class="counts">Вопрос решён с <strong>{{ count($game['getUserGameWrongAnswer']) }}</strong> попытки</span>
                     @endif
                     {!! $game->question !!}
@@ -38,6 +44,9 @@
                 </div>
             @else
                 <div class="tab-pane p-5 fade {{ $key == $step ? "show active" : "" }}" id="game{{ $game->id }}" role="tabpanel" aria-labelledby="game{{ $game->id }}-tab">
+                    <span class="stars">
+                        {{ count($game['getGameAnswers']) }}
+                    </span>
                     {!! $game->question !!}
                     @if($game->image)
                         <img src="{{ asset('images/Games/games/' . $game->image) }}" alt="Answer" class="img-fluid">

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Games\RightAnswer;
+use App\Models\Games\UserGameStar;
 use App\Models\Games\UserRightAnswer;
 use App\Models\Games\UserWrongAnswer;
 use App\Models\NewIdea;
@@ -60,5 +61,10 @@ class User extends Authenticatable
     public function getUsersWrongAnswers()
     {
         return $this->hasMany(UserWrongAnswer::class, 'user_id', 'id');
+    }
+
+    public function getGameStars()
+    {
+        return $this->hasOne(UserGameStar::class, 'user_id', 'id');
     }
 }

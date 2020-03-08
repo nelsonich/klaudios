@@ -18,7 +18,7 @@ $(document).ready(function () {
     $("#selectAnswer").on('click', function () {
         let that = $(this);
         let answer = $('.selected');
-
+        let star = answer.parent().parent().find('span.stars');
         if (answer.hasClass('rightAnswer')) return;
         let answerId = answer.data('answerid');
         let gameId = answer.data('gameid');
@@ -31,12 +31,15 @@ $(document).ready(function () {
             data: {
                 answerId: answerId,
                 gameId: gameId,
+                starCount: star.text(),
             },
             dataType: 'json',
             success: function (response) {
                 if (!response) {
                     answer.addClass('wrongAnswer');
                     that.attr('disabled', true);
+                    let starCount = $(star).text() - 1;
+                    $(star).text(starCount);
                 } else {
                     $('.answer').addClass("wrongAnswer");
                     answer.removeClass("wrongAnswer");

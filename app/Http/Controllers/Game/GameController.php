@@ -7,6 +7,7 @@ use App\Models\Games\GameAnswer;
 use App\Models\Games\GameCategory;
 use App\Models\Games\GameComplexity;
 use App\Models\Games\RightAnswer;
+use App\Models\Games\UserGameStar;
 use App\Models\Games\UserRightAnswer;
 use App\Models\Games\UserWrongAnswer;
 use App\Models\NewIdea;
@@ -23,6 +24,9 @@ class GameController extends Controller
         $newIdae = NewIdea::where('user_id', $userId)->first();
         $newIdae->is_game = 1;
         $newIdae->save();
+        UserGameStar::create([
+            "user_id" => $userId,
+        ]);
         return response()->json('ok');
     }
 
@@ -65,6 +69,7 @@ class GameController extends Controller
         $answerId = $request->post('answerId');
         $gameId = $request->post('gameId');
         $userId = Auth::id();
+        $starCount = $request->post('starCount');
         $isAnswerTrue = RightAnswer::where('game_id', $gameId)->where('answer_id', $answerId)->exists();
         if ($isAnswerTrue) {
             $isRightAnswer = UserRightAnswer::where('user_id', $userId)->where('game_id', $gameId)->exists();
@@ -74,6 +79,10 @@ class GameController extends Controller
                     "game_id" => $gameId,
                     "answer_id" => $answerId,
                 ]);
+
+                $stars = UserGameStar::where('user_id', $userId)->first();
+                $stars->stars+=$starCount;
+                $stars->save();
             }
         } else {
             $isWrongAnswer = UserWrongAnswer::where('user_id', $userId)->where('game_id', $gameId)->where('answer_id', $answerId)->exists();
@@ -91,18 +100,17 @@ class GameController extends Controller
 
     public function getRating()
     {
-        $users = User::where('role', "!=", "superadmin")->with('getUsersRightAnswers', 'getUsersWrongAnswers')->get();
+        $users = User::where('role', "!=", "superadmin")->with('getGameStars')->get();
+
         foreach ($users as $user) {
-            if (!$user['getUsersRightAnswers']->isEmpty()) {
+            if ($user['getGameStars']) {
                 $gamers['user'] = $user;
-                $gamers['rightAnswersCount'] = count($user['getUsersRightAnswers']);
+                $gamers['starsCount'] = $user['getGameStars']['stars'];
                 $sortGamers[] = $gamers;
             }
         }
 
-        $sortByRightAnswersCount = collect($sortGamers)->sortBy('rightAnswersCount')->reverse()->toArray();
-
-
-        return view('Games.rating', ['sortByRightAnswersCount' => $sortByRightAnswersCount]);
+        $sortByStarsCount = collect($sortGamers)->sortBy('starsCount')->reverse()->toArray();
+        return view('Games.rating', ['sortByStarsCount' => $sortByStarsCount]);
     }
 }

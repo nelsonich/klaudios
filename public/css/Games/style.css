@@ -54,6 +54,19 @@ span.counts {
     font-size: medium;
 }
 
+span.stars {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../images/Games/rating/star.png");
+}
+
 span.finished {
     position: absolute;
     top: 0;
@@ -174,6 +187,15 @@ table#rating caption  {
     font-family: cursive;
     font-weight: bold;
     font-size: 20px;
+}
+
+table#rating span.stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    color: #000;
 }
 
 table#rating tr.active {
