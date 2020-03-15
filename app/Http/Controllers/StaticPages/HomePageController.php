@@ -108,4 +108,9 @@ class HomePageController extends Controller
             'cookie' => $cookie,
         ]);
     }
+
+    public function coronavirus()
+    {
+        return view('sections.coronaVirus');
+    }
 }

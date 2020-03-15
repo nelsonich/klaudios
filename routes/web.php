@@ -29,6 +29,7 @@ View::composer('layouts.app', function($view)
 Route::get('/', 'StaticPages\HomePageController@index');
 Route::get('/lang/{locale}', 'StaticPages\HomePageController@lang');
 Route::get('/faq', 'StaticPages\HomePageController@faq');
+Route::get('/coronavirus', 'StaticPages\HomePageController@coronavirus');
 Route::get('/terms', 'StaticPages\HomePageController@terms');
 Route::get('/privacy', 'StaticPages\HomePageController@privacy');
 Route::get('/cookies', 'StaticPages\HomePageController@cookies');
@@ -85,6 +86,11 @@ Route::group([
             Route::post('/add', 'Dashboard\DashboardController@addGame')->name('add-game');
             Route::post('/edit', 'Dashboard\DashboardController@editGame')->name('edit-game');
             Route::post('/change-right-answer', 'Dashboard\DashboardController@changeRightAnswer')->name('change-right-answer');
+        });
+
+        Route::group(['prefix' => "change-games-answers"], function () {
+            Route::get('/', 'Dashboard\DashboardController@getChangedGames');
+            Route::post('/edit/{id?}', 'Dashboard\DashboardController@editChangedGame')->name('edit-changed-game');
         });
 
         Route::group(['prefix' => "games-categories"], function () {

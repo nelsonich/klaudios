@@ -24,4 +24,5 @@ return [
     'resetPassword' => 'Վերականգնել գաղտնաբառը',
     'eMailAddress' => 'Էլեկտրոնային հասցե',
     'sendPasswordResetLink' => 'Ուղարկեք գաղտնաբառի վերափոխման հղումը',
+
 ];

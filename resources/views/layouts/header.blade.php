@@ -36,6 +36,12 @@
                         {{ trans('menu.faq', [], \Session::get('locale')) }}
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('coronavirus') }}">
+                        CoronaVirus
+                    </a>
+                </li>
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
@@ -86,7 +92,6 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-globe"></i>
-                        {{-- Change !!! --}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 80px !important;min-width: 0;">
                         @foreach($languages as $lang)

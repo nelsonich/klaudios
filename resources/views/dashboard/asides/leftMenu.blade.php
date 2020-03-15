@@ -30,4 +30,5 @@
     <a href="{{ url('dashboard/languages') }}">Languages</a>
     <a href="{{ url('dashboard/games') }}">Games</a>
     <a href="{{ url('dashboard/games-categories') }}">Game Categories</a>
+    <a href="{{ url('dashboard/change-games-answers') }}">Edit Games</a>
 </div>

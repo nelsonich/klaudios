@@ -441,4 +441,32 @@ class DashboardController extends Controller
         $cat->save();
         return response()->json('ok');
     }
+
+    public function getChangedGames()
+    {
+        $games = Game::with('getGameAnswers', 'getGameRightAnswer')->paginate(10);
+        return view('dashboard.Pages.changedGames', [
+            "games" => $games
+        ]);
+    }
+
+    public function editChangedGame(Request $request, $gameAnswerId)
+    {
+        $data = $request->except('_token');
+        $gameAnswer = GameAnswer::find($gameAnswerId);
+
+        if ($file = $request->file('image')) {
+            $name = $file->getClientOriginalName();
+            $file->move('images/Games/answers/', $name);
+        } else {
+            $name = $data['oldImage'];
+        }
+
+        $gameAnswer->answer = $data['answer'];
+        $gameAnswer->image = $name;
+        $gameAnswer->save();
+
+        $request->session()->flash('status', 'edit');
+        return redirect()->back();
+    }
 }
