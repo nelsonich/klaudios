@@ -1,3 +1,9 @@
+@font-face { font-family: notoSansBlack; src: url('../../public/webfonts/notosans/NotoSansTC-Black.otf'); }
+@font-face { font-family: notoSansBold; src: url('../../public/webfonts/notosans/NotoSansTC-Bold.otf'); }
+@font-face { font-family: notoSansLight; src: url('../../public/webfonts/notosans/NotoSansTC-Light.otf'); }
+@font-face { font-family: notoSansRegular; src: url('../../public/webfonts/notosans/NotoSansTC-Regular.otf'); }
+@font-face { font-family: notoSansThin; src: url('../../public/webfonts/notosans/NotoSansTC-Thin.otf'); }
+
 html,
 body {
     padding: 0;
@@ -19,6 +25,13 @@ ul li {
 
 p {
     margin: 0;
+    font-family: notoSansThin;
+    font-size: 18px;
+}
+
+h1 {
+    font-family: notoSansBold;
+    font-weight: 600;
 }
 
 img.logo {
@@ -27,6 +40,13 @@ img.logo {
 
 main {
     min-height: 85vh;
+}
+
+/*Header Menu*/
+nav div#userSettingsDropdown a i {
+    position: absolute;
+    top: 14px;
+    left: 30px;
 }
 
 

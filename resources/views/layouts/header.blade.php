@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm pt-0 pb-0">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark lighten-1 primary-color">
     <div class="container">
         <a class="navbar-brand p-0" href="{{ url('/') }}">
             <img src="{{ asset('images/klaudios.png') }}" alt="{{ config('app.name', 'KLAUDIOS') }}" class="logo" />
@@ -19,14 +19,14 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTerms" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ trans('menu.terms', [], \Session::get('locale')) }}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownTerms">
-                        <a class="dropdown-item" href="{{ url('/terms') }}" title="{{ trans('menu.terms.terms', [], \Session::get('locale')) }}">
+                    <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownTerms">
+                        <a style="padding: .25rem 1.5rem !important;" class="dropdown-item" href="{{ url('/terms') }}" title="{{ trans('menu.terms.terms', [], \Session::get('locale')) }}">
                             {{ trans('menu.terms.terms', [], \Session::get('locale')) }}
                         </a>
-                        <a class="dropdown-item" href="{{ url('/privacy') }}" title="{{ trans('menu.terms.privacy', [], \Session::get('locale')) }}">
+                        <a style="padding: .25rem 1.5rem !important;" class="dropdown-item" href="{{ url('/privacy') }}" title="{{ trans('menu.terms.privacy', [], \Session::get('locale')) }}">
                             {{ trans('menu.terms.privacy', [], \Session::get('locale')) }}
                         </a>
-                        <a class="dropdown-item" href="{{ url('/cookies') }}" title="{{ trans('menu.terms.cookies', [], \Session::get('locale')) }}">
+                        <a style="padding: .25rem 1.5rem !important;" class="dropdown-item" href="{{ url('/cookies') }}" title="{{ trans('menu.terms.cookies', [], \Session::get('locale')) }}">
                             {{ trans('menu.terms.cookies', [], \Session::get('locale')) }}
                         </a>
                     </div>
@@ -62,24 +62,28 @@
                             {{ Auth::user()->user_name }} <span class="caret"></span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" id="userSettingsDropdown">
+                        <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="navbarDropdown" id="userSettingsDropdown">
                             @if(\Auth::user()->role == "superadmin")
                                 <a href="{{ url('/dashboard') }}" class="dropdown-item">
                                     Dashboard
                                 </a>
                             @endif
                             <a href="{{ url('home/profile') }}" class="dropdown-item">
+                                <i class="far fa-id-card"></i>
                                 {{ trans('menu.profile', [], \Session::get('locale')) }}
                             </a>
                             <a href="{{ url('home') }}" class="dropdown-item">
+                                <i class="fas fa-home"></i>
                                 {{ trans('menu.home', [], \Session::get('locale')) }}
                             </a>
                             <a href="{{ url('home/games', ['complexity_id' => 1]) }}" class="dropdown-item" id="games">
+                                <i class="fas fa-gamepad"></i>
                                 {{ trans('menu.games', [], \Session::get('locale')) }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i>
                                 {{ trans('menu.logout', [], \Session::get('locale')) }}
                             </a>
 
@@ -95,7 +99,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="width: 80px !important;min-width: 0;">
                         @foreach($languages as $lang)
-                            <a class="dropdown-item {{ $lang->lang == \Session::get('locale') ? "active" : "" }}" href="{{ url('/lang', $lang->lang) }}" title="{{ $lang->lang }}">
+                            <a class="dropdown-item {{ $lang->lang == \Session::get('locale') ? "active" : "" }}" href="{{ url('/lang', $lang->lang) }}" title="{{ $lang->lang }}" style="padding: .25rem 1.5rem !important;">
                                 <img src="{{ asset('images/lang/' . $lang->image) }}" alt="{{ $lang->lang }}" class="w-100">
                             </a>
                         @endforeach

@@ -10,11 +10,15 @@ $(function () {
         }
     }
 
+    $('#cases_by_country tbody').append(`<tr><td colspan="9" class="text-center">Loading data...</td></tr>`)
+
     $.ajax(settings).done(function (response) {
-        let asd = JSON.parse(response);
-        $('#cases_by_country caption').append(asd.statistic_taken_at);
-        console.log(asd.countries_stat);
-        $.each(asd.countries_stat, function (index, value) {
+        let data = JSON.parse(response);
+        let casesByCountry = $('#cases_by_country tbody');
+        $('#cases_by_country caption').append(data.statistic_taken_at);
+
+        casesByCountry.empty();
+        $.each(data.countries_stat, function (index, value) {
             let tr = "";
              tr = `<tr>
                         <td>${index+1}</td>
@@ -28,7 +32,7 @@ $(function () {
                         <td>${value.serious_critical}</td>
                       </tr>`;
 
-             $('#cases_by_country tbody').append(tr);
+            casesByCountry.append(tr);
         });
 
         $('#cases_by_country').DataTable();

@@ -18,4 +18,5 @@ return [
     'terms.cookies' => 'Политика в отношении файлов cookie',
     'games' => 'Игры',
     'rating' => 'Рейтинг',
+    'weather' => 'Погода',
 ];

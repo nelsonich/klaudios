@@ -18,4 +18,5 @@ return [
     'terms.cookies' => 'Cookies Policy',
     'games' => 'Games',
     'rating' => 'Rating',
+    'weather' => 'Weather'
 ];

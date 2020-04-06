@@ -1,3 +1,13 @@
+.card h5.card-title {
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 16px !important;
+}
+
+
+
 div.title h1 {
     margin: 20px auto;
 }
@@ -25,10 +35,10 @@ div.news a {
 
 /* Like News */
 span.likeNews {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    font-size: 30px;
+    /*position: absolute;*/
+    /*right: 20px;*/
+    /*top: 10px;*/
+    /*font-size: 20px;*/
     cursor: pointer;
 }
 
@@ -44,10 +54,17 @@ span.activeLike:hover {
     color: #fff !important;
 }
 
-span.likesCount {
+/*span.likesCount {
     position: absolute;
     right: 70px;
     top: 20px;
+}*/
+
+/* Search News */
+input.invalid-input {
+    border-bottom: 1px solid #EA0015 !important;
+    -webkit-box-shadow: 0 1px 0 0 #EA0015 !important;
+    box-shadow: 0 1px 0 0 #EA0015 !important;
 }
 
 

@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Models\NewsCommentLikes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Stevebauman\Location\Facades\Location;
 
 class HomeController extends Controller
 {
@@ -31,11 +33,46 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $news = News::with('getNewsLikes', 'getNewsLikesCounts')->paginate(5);
+        $ip = request()->ip(); //46.241.208.21 My Ip
+        $data = Location::get($ip);
+        $countryName = "Armenia";
+        if ($ip != '127.0.0.1') $countryName = $data->countryName;
+        Cookie::queue('countryName', $countryName, 24 * 60);
+
+        $news = News::with('getNewsLikes', 'getNewsLikesCounts', 'getNewsCommentCount')->paginate(6);
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->with('getAuthGameStatus')->first();
+        $country = Cookie::get('countryName');
 
-        return view('home', ['news' => $news,'user' => $user]);
+        return view('home', ['news' => $news, 'user' => $user, 'country' => $country]);
+    }
+
+    public function searchNews(Request $request)
+    {
+        $user_id = Auth::id();
+        $user = User::where('id', $user_id)->with('getAuthGameStatus')->first();
+        $country = Cookie::get('countryName');
+        $q = $request->get('searchNewsName');
+
+        $request->flashOnly(['searchNewsName']);
+
+        if ($q != "") {
+            $news = News::where('title', 'LIKE', '%' . $q . '%')->paginate(6)->setPath('');
+            $pagination = $news->appends(array(
+                'searchNewsName' => $request->get('searchNewsName')
+            ));
+            if (count($news) > 0)
+                return view('home', ['news' => $news, 'user' => $user, 'country' => $country])->withQuery($q);
+        }
+        return view('home', ['user' => $user, 'country' => $country]);
+    }
+
+    public function getNewsName(Request $request)
+    {
+        $value = $request->post('newsName');
+
+        $news = News::query()->where('title', 'LIKE', "%{$value}%")->get();
+        return response()->json($news);
     }
 
     public function newsItem($id)

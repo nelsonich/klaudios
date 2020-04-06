@@ -12,7 +12,7 @@ div#loginForm div.card,
 div#registrationForm div.card,
 div#resetForm div.card,
 div#emailForm div.card {
-    background: #e28585;
+    /*background: #e28585;*/
     width: 70%;
     margin: auto;
     color: #3a4a54;
@@ -25,7 +25,7 @@ div#registrationForm form i {
 
 div#loginForm form a,
 div#registrationForm form a {
-    color: #3a4a54;
+    /*color: #3a4a54;*/
 }
 
 div#loginForm form button,
@@ -33,6 +33,10 @@ div#registrationForm form button,
 div#resetForm form button,
 div#emailForm form button {
     background-color: #e8a348;
+}
+
+div#registrationForm form p {
+    font-size: 15px !important;
 }
 
 @media screen and (max-width: 1000px) {

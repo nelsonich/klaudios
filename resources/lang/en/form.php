@@ -24,4 +24,9 @@ return [
     'resetPassword' => 'Reset Password',
     'eMailAddress' => 'E-Mail Address',
     'sendPasswordResetLink' => 'Send Password Reset Link',
+    'dashboard' => 'Dashboard',
+    'noResults' => 'No Results',
+    'search' => 'Saerch',
+    'cookiesUsesWebPageMessage' => 'By continuing to use klaudios, you agree to the use of cookies. More information can be found in the',
+    'accept' => 'Accept',
 ];

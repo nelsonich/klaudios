@@ -52,6 +52,8 @@ Route::group([
         Route::post('/comments-news', 'HomeController@commentsNews')->name('comments-news');
         Route::post('/create-comment-news', 'HomeController@createCommentNews')->name('create-comment-news');
         Route::post('/like-comment-news', 'HomeController@likeCommentNews')->name('like-comment-news');
+        Route::post('/get-news-name', 'HomeController@getNewsName')->name('get-news-name');
+        Route::get('/search-news', 'HomeController@searchNews')->name('search-news');
 
         /* Change Profile Settings */
         Route::get('/profile', 'HomeController@profile')->name('profile');
@@ -148,4 +150,11 @@ Route::group([
             Route::post('/edit-cookies', 'Dashboard\DashboardController@editCookies')->name('edit-cookies');
         });
     });
+
+    Route::group(['prefix' => "paypal"], function () {
+        Route::get('/', 'PayPalController@paypal')->name('paypal');
+        Route::post('/payment-with-paypal', 'PayPalController@payWithpaypal')->name('payment-with-paypal');
+        Route::get('/status', 'PayPalController@getPaymentStatus')->name('status');
+    });
+
 });

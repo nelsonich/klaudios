@@ -13,14 +13,22 @@ use Illuminate\Http\Request;
 use App\Models\RequestQuote;
 use App\Models\StaticInformation;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Stevebauman\Location\Facades\Location;
 
 class HomePageController extends Controller
 {
     public function index()
     {
+        $ip = request()->ip(); //46.241.208.21 My Ip
+        $data = Location::get($ip);
+        $countryName = "Armenia";
+        if ($ip != '127.0.0.1') $countryName = $data->countryName;
+        Cookie::queue('countryName', $countryName, 24*60);
+
         $lang = Session::get('locale');
 
         if ($lang == null) $lang = 'en';

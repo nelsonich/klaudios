@@ -28,5 +28,7 @@ $(document).ready(function () {
         });
     });
     //Tooltip
+
     $('span[data-toggle=tooltip]').tooltip({ boundary: 'window' });
+
 });
