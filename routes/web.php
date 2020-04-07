@@ -46,6 +46,12 @@ Route::group([
 
     Route::group(['prefix' => "home"], function () {
         Route::get('/', 'HomeController@index')->name('home');
+
+        /* Chat */
+        Route::get('/chat', 'HomeController@getUsers');
+        Route::get('/message/{id}', 'HomeController@getMessages')->name('message');
+        Route::post('message', 'HomeController@sendMessage');
+
         /* News */
         Route::get('/item/{id}', 'HomeController@newsItem');
         Route::post('/like-news', 'HomeController@likeNews')->name('like-news');

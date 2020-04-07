@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.0",
         "orangehill/iseed": "^2.6",
         "paypal/rest-api-sdk-php": "^1.14",
+        "pusher/pusher-php-server": "^4.1",
         "srmklive/paypal": "^1.7",
         "stevebauman/location": "^5.0"
     },
