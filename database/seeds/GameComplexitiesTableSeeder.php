@@ -22,24 +22,24 @@ class GameComplexitiesTableSeeder extends Seeder
                 'id' => 1,
                 'name' => 'новичок',
                 'image' => 'newbie.png',
-                'created_at' => '2020-03-04 09:43:59',
-                'updated_at' => '2020-03-04 09:43:59',
+                'created_at' => '2020-03-04 10:43:59',
+                'updated_at' => '2020-03-04 10:43:59',
             ),
             1 => 
             array (
                 'id' => 2,
                 'name' => 'опытный',
                 'image' => 'experienced.png',
-                'created_at' => '2020-03-04 09:43:59',
-                'updated_at' => '2020-03-04 09:43:59',
+                'created_at' => '2020-03-04 10:43:59',
+                'updated_at' => '2020-03-04 10:43:59',
             ),
             2 => 
             array (
                 'id' => 3,
                 'name' => 'эксперт',
                 'image' => 'expert.png',
-                'created_at' => '2020-03-04 09:43:59',
-                'updated_at' => '2020-03-04 09:43:59',
+                'created_at' => '2020-03-04 10:43:59',
+                'updated_at' => '2020-03-04 10:43:59',
             ),
         ));
         

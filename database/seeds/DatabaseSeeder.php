@@ -32,5 +32,12 @@ class DatabaseSeeder extends Seeder
         $this->call(RightAnswersTableSeeder::class);
         $this->call(GameComplexitiesTableSeeder::class);
         $this->call(UserRightAnswersTableSeeder::class);
+        $this->call(FaqsTableSeeder::class);
+        $this->call(NewsCommentLikesTableSeeder::class);
+        $this->call(PayersTableSeeder::class);
+        $this->call(UserGameStarsTableSeeder::class);
+        $this->call(UserPaymentBalancesTableSeeder::class);
+        $this->call(UserStatusesTableSeeder::class);
+        $this->call(UserWrongAnswersTableSeeder::class);
     }
 }

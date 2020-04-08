@@ -12,12 +12,12 @@ class StaticInformationTableSeeder extends Seeder
      */
     public function run()
     {
-
+        
 
         \DB::table('static_information')->delete();
-
+        
         \DB::table('static_information')->insert(array (
-            0 =>
+            0 => 
             array (
                 'id' => 1,
                 'logo' => 'klaudios.png',
@@ -28,11 +28,11 @@ class StaticInformationTableSeeder extends Seeder
                 'instagram_link' => 'https://www.instagram.com/klaudios.change/',
                 'facebook_link' => 'https://www.facebook.com/klaudios.klaudios.370',
                 'twitter_link' => 'https://twitter.com/klaudios12',
-                'created_at' => '2020-02-25 22:20:02',
-                'updated_at' => '2020-02-25 22:23:27',
+                'created_at' => '2020-02-25 23:20:02',
+                'updated_at' => '2020-02-25 23:23:27',
             ),
         ));
-
-
+        
+        
     }
 }
