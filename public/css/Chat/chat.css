@@ -1,3 +1,15 @@
+body {
+    background-image: url("/images/chat.jpg");
+    background-position: center;
+}
+
+div.chat {
+    background: #ffffff;
+    box-shadow: 10px 10px 10px;
+    border-radius: 5px;
+    padding: 0;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -9,68 +21,94 @@ li {
     border: 1px solid #dddddd;
     overflow-y: auto;
 }
+
 .user-wrapper {
-    height: 600px;
+    height: 520px;
+    border-radius: 5px 0 0 5px;
 }
+
 .user {
     cursor: pointer;
-    padding: 5px 0;
+    padding: 10px;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
 }
+
 .user:hover {
     background: #eeeeee;
 }
+
 .user:last-child {
     margin-bottom: 0;
 }
+
 .pending {
-    position: absolute;
-    left: 13px;
-    top: 9px;
-    background: #b600ff;
+    align-self: flex-start;
+    background: #4285f4;
     margin: 0;
     border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    line-height: 18px;
-    padding-left: 5px;
+    width: 20px;
+    height: 20px;
     color: #ffffff;
     font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .media-left {
     margin: 0 10px;
 }
+
 .media-left img {
     width: 64px;
     border-radius: 64px;
 }
+
 .media-body p {
     margin: 6px 0;
 }
+
 .message-wrapper {
     padding: 10px;
-    height: 536px;
+    height: 454px;
     background: #eeeeee;
+    border-radius: 0 5px 5px 0;
 }
+
 .messages .message {
     margin-bottom: 15px;
 }
+
 .messages .message:last-child {
     margin-bottom: 0;
 }
+
 .received, .sent {
     width: 45%;
     padding: 3px 10px;
     border-radius: 10px;
 }
+
 .received {
     background: #ffffff;
 }
+
 .sent {
-    background: #3bebff;
+    color: #fff;
+    background: #7badff;
     float: right;
     text-align: right;
+    font-size: 15px;
 }
+
+.sent .date {
+    color: #000 !important;
+}
+
 .message p {
     margin: 5px 0;
 }
@@ -89,8 +127,22 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
     outline: none;
-    border: 1px solid #cccccc;
+    border: 2px solid;
 }
+
 input[type=text]:focus {
-    border: 1px solid #aaaaaa;
+    border: 2px solid #aaaaaa;
+}
+
+
+@media screen and (max-width: 1199px) {
+    .media-body p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .media-body p:last-child {
+        display: none;
+    }
 }

@@ -179,7 +179,7 @@ class HomeController extends Controller
 
     public function getUsers()
     {
-        $users = User::where('id', '!=', Auth::id())->get();
+        $users = User::where('id', '!=', Auth::id())->with('getUserUnreadMessages')->get();
 //        dd($users);
         return view('Profile.Chat.index', ['users' => $users]);
     }

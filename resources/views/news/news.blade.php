@@ -1,3 +1,8 @@
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/news/news.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+@endpush
+
 <div class="row text-center title">
     <h1 title="News">News.</h1>
 </div>
@@ -54,8 +59,12 @@
                                   data-routeName="{{ route('like-news') }}">
                                 <i class="far fa-heart"></i>
                             </span>
-                                <span class="likesCount text-white" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{ App\Helpers\getLikedUser::getUserName($item) }}">
+                            <span class="likesCount text-white">
                                 {{ count($item['getNewsLikesCounts']) > 0 ? count($item['getNewsLikesCounts']) . " likes" : "No Likes" }}
+
+                                <div class="likedUsers">
+                                    {!! App\Helpers\getLikedUser::getUserName($item) !!}
+                                </div>
                             </span>
                             </li>
                         </ul>
@@ -73,5 +82,7 @@
 
 
 @push('scripts')
+    <script src="{{ asset('js/News/likeNews.js') }}"></script>
     <script src="{{ asset('js/News/searchNews.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
 @endpush

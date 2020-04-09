@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Login')
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/login_and_reg.css') }}">
+@endpush
 @section('content')
 <div class="container" id="loginForm">
     <div class="row justify-content-center">

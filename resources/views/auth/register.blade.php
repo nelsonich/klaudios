@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Registration')
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/login_and_reg.css') }}">
+@endpush
 @section('content')
 <div class="container" id="registrationForm">
     <div class="row justify-content-center">
@@ -151,3 +154,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/registration/registr.js') }}"></script>
+@endpush
