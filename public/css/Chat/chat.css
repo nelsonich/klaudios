@@ -68,6 +68,13 @@ li {
     border-radius: 64px;
 }
 
+.media-body {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .media-body p {
     margin: 6px 0;
 }

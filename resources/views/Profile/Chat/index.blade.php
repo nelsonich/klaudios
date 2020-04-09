@@ -17,8 +17,8 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <p class="name">{{ $user->user_name }}</p>
-                                        <p class="email">{{ $user->email }}</p>
+                                        <p class="name" title="{{ $user->user_name }}">{{ $user->user_name }}</p>
+                                        <p class="email" title="{{ $user->email }}">{{ $user->email }}</p>
                                     </div>
                                 </div>
                                 {{--will show unread count notification--}}
