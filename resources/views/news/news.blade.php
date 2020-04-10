@@ -31,9 +31,9 @@
                     </div>
 
                     <div class="card-body">
-                        <h5 class="card-title">{{ \App\Helpers\TextLimit::limit($item->title, 30) }}</h5>
+                        <h5 class="card-title" title="{{ $item->title }}">{{ \App\Helpers\TextLimit::limit($item->title, 25) }}</h5>
                         <hr>
-                        <p class="card-text">{!! \App\Helpers\TextLimit::limit($item->description, 75) !!}</p>
+                        <p class="card-text">{!! \App\Helpers\TextLimit::limit($item->description, 65) !!}</p>
                     </div>
                     <a href="{{ url('home/item', [$item->id]) }}" class="btn btn-sm btn-info">
                         {{ trans('form.readMore', [], \Session::get('locale')) }}
