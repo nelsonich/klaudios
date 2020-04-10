@@ -61,10 +61,11 @@
                             </span>
                             <span class="likesCount text-white">
                                 {{ count($item['getNewsLikesCounts']) > 0 ? count($item['getNewsLikesCounts']) . " likes" : "No Likes" }}
-
-                                <div class="likedUsers">
-                                    {!! App\Helpers\getLikedUser::getUserName($item) !!}
-                                </div>
+                                @if(count($item['getNewsLikesCounts']) > 0)
+                                    <div class="likedUsers">
+                                        {!! App\Helpers\getLikedUser::getUserName($item) !!}
+                                    </div>
+                                @endif
                             </span>
                             </li>
                         </ul>

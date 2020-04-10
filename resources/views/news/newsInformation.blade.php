@@ -25,11 +25,12 @@
                     <a href="{{ \URL::previous() }}" class="btn btn-sm btn-info float-right">
                         {{ trans('form.back', [], \Session::get('locale')) }}
                     </a>
-                    {{--<!-- Linkedin -->
-                    <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="{{ url('https://twitter.com/share?ref_src=twsrc%5Etfw') }}" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="{{ url('https://platform.twitter.com/widgets.js') }}" charset="utf-8"></script>
-                    <iframe src="https://www.facebook.com/plugins/share_button.php?href=http://klaudios.loc/home/item/1&layout=button_count&size=small&width=119&height=28&appId" width="119" height="28" style="border:none;overflow:hidden; position: absolute;bottom: 10px; left: 20px;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-                    --}}
+                    <!-- Linkedin -->
+{{--                    <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>--}}
+                    <div class="d-flex">
+                        <a href="{{ url('https://twitter.com/share?ref_src=twsrc%5Etfw') }}" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="{{ url('https://platform.twitter.com/widgets.js') }}" charset="utf-8"></script>
+                        <iframe src="https://www.facebook.com/plugins/share_button.php?href={{\Request::url()}}&layout=button_count&size=small&width=119&height=28&appId" width="119" height="28" style="border:none;overflow:hidden;margin-left: 5px;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                    </div>
                 </div>
             </div>
         </div>

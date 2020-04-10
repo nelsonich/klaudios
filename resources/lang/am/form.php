@@ -29,4 +29,5 @@ return [
     'search' => 'Որոնել',
     'cookiesUsesWebPageMessage' => "Շարունակելով օգտագործել klaudios- ը, դուք համաձայն եք cookie- ների օգտագործման հետ: Լրացուցիչ տեղեկություններ կարելի է գտնել",
     'accept' => "Ընդունել",
+    'chatChooseUserMessage' => 'Խնդրում ենք ընտրել անձին',
 ];

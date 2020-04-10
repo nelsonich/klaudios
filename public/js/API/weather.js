@@ -2,7 +2,7 @@ $(function () {
     let country = $("#weather-classic-shadow").data('country');
     $('.weatherLoading').append("Loading data...");
     if (country === '') return;
-    let apiKey = "b6907d289e10d714a6e88b30761fae22";
+    let apiKey = "439d4b804bc8187953eb36d2a8c26a02";
     $.ajax({
         url: `https://openweathermap.org/data/2.5/weather?q=${country}&appid=${apiKey}`,
         method: 'get',

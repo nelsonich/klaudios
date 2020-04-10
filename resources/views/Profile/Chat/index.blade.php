@@ -5,7 +5,7 @@
 @endpush
 @section('content')
     <div class="container chat">
-        <div class="row">
+        <div class="row w-row mx-auto">
             <div class="col-md-4 pr-0">
                 <div class="user-wrapper">
                     <ul class="users" data-userId="{{ \Auth::id() }}">
@@ -13,7 +13,7 @@
                             <li class="user" id="{{ $user->id }}">
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="{{ url('https://via.placeholder.com/150') }}" alt="" class="media-object">
+                                        <img src="{{ asset('images/klaudios.png') }}" alt="admin" class="media-object">
                                     </div>
 
                                     <div class="media-body">
@@ -34,7 +34,9 @@
                 </div>
             </div>
 
-            <div class="col-md-8 pl-0" id="messages"></div>
+            <div class="col-md-8 pl-0 chooseUser" id="messages">
+                {{ trans('form.chatChooseUserMessage', [], \Session::get('locale')) }}
+            </div>
         </div>
     </div>
 @endsection

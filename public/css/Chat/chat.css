@@ -3,11 +3,11 @@ body {
     background-position: center;
 }
 
-div.chat {
+div.chat .row {
     background: #ffffff;
     box-shadow: 10px 10px 10px;
     border-radius: 5px;
-    padding: 0;
+    /*padding: 0;*/
 }
 
 ul {
@@ -95,7 +95,7 @@ li {
 }
 
 .received, .sent {
-    width: 45%;
+    /*width: 45%;*/
     padding: 3px 10px;
     border-radius: 10px;
 }
@@ -141,15 +141,38 @@ input[type=text]:focus {
     border: 2px solid #aaaaaa;
 }
 
+div#messages.chooseUser {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 @media screen and (max-width: 1199px) {
     .media-body p {
         font-size: 14px;
+    }
+
+    div.media {
+        width: 70%;
     }
 }
 
 @media screen and (max-width: 991px) {
     .media-body p:last-child {
         display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    div.chat .pr-0 {
+        padding-right: 15px !important;
+    }
+
+    div.chat div.user-wrapper {
+        height: auto;
+    }
+
+    div.chat div#messages {
+        padding-left: 15px !important;
     }
 }

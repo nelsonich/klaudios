@@ -9,7 +9,7 @@ $(function () {
             }
         });
         // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
         var pusher = new Pusher('53ec86b0b55db378b5ad', {
             cluster: 'ap2',
             forceTLS: true
@@ -34,8 +34,10 @@ $(function () {
                 }
             }
         });
-        $('.user').click(function () {
+        $('.user').on('click', function () {
+            let messages = $('#messages');
             $('.user').removeClass('active');
+            messages.text('Loading...');
             $(this).addClass('active');
             $(this).find('.pending').remove();
             receiver_id = $(this).attr('id');
@@ -45,17 +47,21 @@ $(function () {
                 data: "",
                 cache: false,
                 success: function (data) {
-                    $('#messages').html(data);
+                    messages.removeClass('chooseUser');
+                    messages.html(data);
                     scrollToBottomFunc();
+                    console.clear();
                 }
             });
         });
+
         $(document).on('keyup', '.input-text input', function (e) {
-            var message = $(this).val();
+            let message = $(this).val();
             // check if enter key is pressed and message is not null also receiver is selected
-            if (e.keyCode == 13 && message != '' && receiver_id != '') {
+            if (e.keyCode === 13 && message !== '' && receiver_id !== '') {
                 $(this).val(''); // while pressed enter text box will be empty
-                var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                $(this).attr({'disabled': true, 'placeholder': "loading..."});
+                let datastr = "receiver_id=" + receiver_id + "&message=" + message;
                 $.ajax({
                     type: "post",
                     url: "message", // need to create this post route
