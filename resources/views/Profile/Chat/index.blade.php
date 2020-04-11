@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Chat')
+@section('description', 'On this Klaudios page, you can ask your questions to the site administrator.')
+
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/Chat/chat.css') }}">
 @endpush

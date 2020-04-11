@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Reset Password')
+@section('description', 'Klaudios reset password page.')
+
 @section('content')
 <div class="container" id="resetForm">
     <div class="row justify-content-center">

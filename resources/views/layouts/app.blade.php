@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
+    <meta name="description" content="@yield('description')">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Home')
-
+@section('description', 'On this Klaudios page you can find the news you are interested in and find out the air temperature')
 @section('content')
 <div class="container">
 

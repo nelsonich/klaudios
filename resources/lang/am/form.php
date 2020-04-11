@@ -30,4 +30,7 @@ return [
     'cookiesUsesWebPageMessage' => "Շարունակելով օգտագործել klaudios- ը, դուք համաձայն եք cookie- ների օգտագործման հետ: Լրացուցիչ տեղեկություններ կարելի է գտնել",
     'accept' => "Ընդունել",
     'chatChooseUserMessage' => 'Խնդրում ենք ընտրել անձին',
+    'createAnAccount' => 'Դեռ հաշիվ չունե՞ք:',
+    'registrationPrivacyPolicyLink' => 'Ձեր անձնական տվյալները մշակվելու են համաձայն մեր ',
+    'iConsent' => 'Ես համաձայն եմ Klaudios- ի ',
 ];

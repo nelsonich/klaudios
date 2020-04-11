@@ -1,8 +1,8 @@
-@font-face { font-family: notoSansBlack; src: url('../../public/webfonts/notosans/NotoSansTC-Black.otf'); }
-@font-face { font-family: notoSansBold; src: url('../../public/webfonts/notosans/NotoSansTC-Bold.otf'); }
-@font-face { font-family: notoSansLight; src: url('../../public/webfonts/notosans/NotoSansTC-Light.otf'); }
-@font-face { font-family: notoSansRegular; src: url('../../public/webfonts/notosans/NotoSansTC-Regular.otf'); }
-@font-face { font-family: notoSansThin; src: url('../../public/webfonts/notosans/NotoSansTC-Thin.otf'); }
+/*@font-face { font-family: notoSansBlack; src: url('../../public/webfonts/notosans/NotoSansTC-Black.otf'); }*/
+/*@font-face { font-family: notoSansBold; src: url('../../public/webfonts/notosans/NotoSansTC-Bold.otf'); }*/
+/*@font-face { font-family: notoSansLight; src: url('../../public/webfonts/notosans/NotoSansTC-Light.otf'); }*/
+/*@font-face { font-family: notoSansRegular; src: url('../../public/webfonts/notosans/NotoSansTC-Regular.otf'); }*/
+/*@font-face { font-family: notoSansThin; src: url('../../public/webfonts/notosans/NotoSansTC-Thin.otf'); }*/
 
 html,
 body {
@@ -25,12 +25,12 @@ ul li {
 
 p {
     margin: 0;
-    font-family: notoSansThin;
+    /*font-family: notoSansThin;*/
     font-size: 18px;
 }
 
 h1 {
-    font-family: notoSansBold;
+    /*font-family: notoSansBold;*/
     font-weight: 600;
 }
 

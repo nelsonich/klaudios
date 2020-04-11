@@ -39,7 +39,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('coronavirus') }}">
-                        CoronaVirus
+                        {{ trans('menu.coronavirus', [], \Session::get('locale')) }}
                     </a>
                 </li>
                 <!-- Authentication Links -->

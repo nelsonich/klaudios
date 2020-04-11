@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Registration')
+@section('description', 'Klaudios registration page.')
+
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/login_and_reg.css') }}">
 @endpush
@@ -128,7 +130,7 @@
                             <div>
                                 <p>
                                     <label for="termsAndConditions">
-                                        I consent with Klaudios <a style="text-decoration: underline;" target="_blank" href="{{ url('terms') }}">Terms & Conditions</a>
+                                        {{ trans('form.iConsent', [], \Session::get('locale')) }}<a style="text-decoration: underline;" target="_blank" href="{{ url('terms') }}">Terms & Conditions</a>
                                     </label>
                                     <input id="termsAndConditions"
                                            type="checkbox"
@@ -137,7 +139,7 @@
                                            style="align-self: center;"/>
                                 </p>
                             </div>
-                            <p class="m-0">Your personal data will be processed in accordance with our <a style="text-decoration: underline;" target="_blank" href="{{ url('privacy') }}">Privacy Policy</a>.</p>
+                            <p class="m-0">{{ trans('form.registrationPrivacyPolicyLink', [], \Session::get('locale')) }}<a style="text-decoration: underline;" target="_blank" href="{{ url('privacy') }}">Privacy Policy</a>.</p>
                         </div>
 
                         <div class="form-group row mb-0 text-center">

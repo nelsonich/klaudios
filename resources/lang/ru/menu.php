@@ -19,4 +19,7 @@ return [
     'games' => 'Игры',
     'rating' => 'Рейтинг',
     'weather' => 'Погода',
+    'coronavirus' => 'Коронавирус',
+    'coronavirusDescription' => 'Вы можете следить за статистикой коронавируса во всех странах на этой странице.',
+    'gameRatingDescription' => 'В Klaudios Games Rating вы можете увидеть свою позицию по сравнению с другими конкурентами.',
 ];

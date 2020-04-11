@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | FAQ')
+@section('description', 'On this page of Klaudios you can get the answers to your questions')
+
 @section('content')
     <div class="container">
         <div class="row">

@@ -73,7 +73,7 @@
                 </div>
             </div>
         @endforeach
-        {!! $news->render() !!}
+        <div>{!! $news->render() !!}</div>
     @else
         <p class="text-center mx-auto">
             {{ trans('form.noResults', [], \Session::get('locale')) }}

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@section('title', 'Klaudios | Privacy Policy')
+@section('title', 'Klaudios | Cookies Policy')
+@section('description', 'A cookie policy is used to inform visitors to our site that we use cookies on our website, web application or mobile application.')
+
 @section('content')
     <div class="container">
         <div class="row mb-5">

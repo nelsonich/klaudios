@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Terms And Conditions')
+@section('description', 'A Terms and Conditions Agreement Klaudios is a contract that contains acceptable terms, rules, guidelines and other useful sections that users must agree to use or access our website.')
 @section('content')
     <div class="container">
         <div class="row mb-5">

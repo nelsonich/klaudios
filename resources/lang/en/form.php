@@ -30,4 +30,7 @@ return [
     'cookiesUsesWebPageMessage' => 'By continuing to use klaudios, you agree to the use of cookies. More information can be found in the',
     'accept' => 'Accept',
     'chatChooseUserMessage' => 'Please select a person',
+    'createAnAccount' => 'Don\'t have an account yet?',
+    'registrationPrivacyPolicyLink' => 'Your personal data will be processed in accordance with our ',
+    'iConsent' => 'I consent with Klaudios ',
 ];

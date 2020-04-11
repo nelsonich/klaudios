@@ -30,4 +30,7 @@ return [
     'cookiesUsesWebPageMessage' => 'Продолжая использовать klaudios, вы соглашаетесь на использование файлов cookie. Более подробную информацию можно найти в Политике',
     'accept' => 'Принимать',
     'chatChooseUserMessage' => 'Пожалуйста, выберите человека',
+    'createAnAccount' => 'Не зарегистрировались?',
+    'registrationPrivacyPolicyLink' => 'Ваши личные данные будут обрабатываться в соответствии с нашей ',
+    'iConsent' => 'Я согласен с Klaudios',
 ];

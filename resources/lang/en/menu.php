@@ -18,5 +18,8 @@ return [
     'terms.cookies' => 'Cookies Policy',
     'games' => 'Games',
     'rating' => 'Rating',
-    'weather' => 'Weather'
+    'weather' => 'Weather',
+    'coronavirus' => 'Coronavirus',
+    'coronavirusDescription' => 'You can follow coronavirus statistics in all countries on this page.',
+    'gameRatingDescription' => 'In Klaudios Games Rating you can see your position against other competitors',
 ];

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Login')
+@section('description', 'Klaudios login page.')
+
 @push('css')
     <link rel="stylesheet" href="{{ asset('css/login_and_reg.css') }}">
 @endpush
@@ -13,6 +15,9 @@
                 </div>
 
                 <div class="card-body">
+                    <div class="text-center">
+                        <a href="{{ url('register') }}">{{ trans('form.createAnAccount', [], \Session::get('locale')) }}</a>
+                    </div>
                     <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate>
                         @csrf
 

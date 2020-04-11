@@ -1,7 +1,10 @@
 @extends('Games.layouts.app')
 @section('title', 'Klaudios | Rating')
+@section('description', 'In Klaudios Games Rating you can see your position against other competitors')
+
 @section('content')
     <div class="container">
+        <h3 class="text-center text-white mb-5">{{ trans('menu.gameRatingDescription', [], \Session::get('locale')) }}</h3>
         <div class="table-responsive">
             <table id="rating" class="table table-hover table-dark">
                 <caption>
