@@ -98,7 +98,7 @@ class DashboardController extends Controller
             $files->move($destinationPath, $profilefile);
 
         } else {
-            $profilefile = 'news.png';
+            $profilefile = $request->post('newsoldimage');
         }
 
         $data = $request->except('_token');
