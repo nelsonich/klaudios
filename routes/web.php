@@ -65,6 +65,7 @@ Route::group([
         Route::get('/profile', 'HomeController@profile')->name('profile');
         Route::post('/edit-profile', 'HomeController@editProfile')->name('edit-profile');
         Route::post('/edit-profile-password', 'HomeController@editProfilePassword')->name('edit-profile-password');
+        Route::post('/edit-profile-avatar', 'HomeController@editProfileAvatar')->name('edit-profile-avatar');
 
         /* Game Accept Modal */
         Route::post('/acceptNextGameModal', 'Game\GameController@acceptNextGameModal')->name('acceptNextGameModal');

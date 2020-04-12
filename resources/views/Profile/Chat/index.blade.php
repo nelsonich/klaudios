@@ -15,7 +15,7 @@
                             <li class="user" id="{{ $user->id }}">
                                 <div class="media">
                                     <div class="media-left">
-                                        <img src="{{ asset('images/klaudios.png') }}" alt="admin" class="media-object">
+                                        <img src="{{ $user->avatar == null ? asset('images/default-profile-picture.jpg') : asset('images/users/'.$user->avatar)  }}" alt="admin" class="media-object">
                                     </div>
 
                                     <div class="media-body">

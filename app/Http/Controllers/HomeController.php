@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Message;
 use App\User;
+use Pusher\Pusher;
 use App\Models\News;
+use App\Models\Message;
 use App\Models\LikeNews;
 use App\Models\NewsComment;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Models\NewsCommentLikes;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Hash;
-use Pusher\Pusher;
 use Stevebauman\Location\Facades\Location;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class HomeController extends Controller
 {
@@ -43,7 +44,7 @@ class HomeController extends Controller
 
         $news = News::with('getNewsLikes', 'getNewsLikesCounts', 'getNewsCommentCount')->paginate(6);
         $user_id = Auth::id();
-        $user = User::where('id', $user_id)->with('getAuthGameStatus')->first();
+        $user = User::where('id', $user_id)->with('getAuthGameStatus', 'getAuthUserUnreadMessages')->first();
         $country = Cookie::get('countryName');
 
         return view('home', ['news' => $news, 'user' => $user, 'country' => $country]);
@@ -174,6 +175,23 @@ class HomeController extends Controller
 
         $request->session()->flash('status', 'edit');
         return redirect()->back();
+    }
+
+    public function editProfileAvatar(Request $request)
+    {
+        $user = User::find(Auth::id());
+        $image = $request->file('file');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/images/users/');
+        $image->move($destinationPath, $imageName);
+        $img = Image::make($destinationPath . DIRECTORY_SEPARATOR . $imageName);
+        $img->resize(150, 150);
+        $img->save();
+        $oldImageName = $user->avatar;
+        $user->avatar = $imageName;
+        $user->save();
+        unlink($destinationPath . DIRECTORY_SEPARATOR . $oldImageName);
+        return response()->json('ok');
     }
 
 

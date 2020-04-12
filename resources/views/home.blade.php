@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Klaudios | Home')
 @section('description', 'On this Klaudios page you can find the news you are interested in and find out the air temperature')
+
 @section('content')
 <div class="container">
 
@@ -9,7 +10,12 @@
             <div class="card">
                 <div class="card-header">
                     {{ trans('form.dashboard', [], \Session::get('locale')) }}
-                    <a class="float-right" href="{{ url('home/profile') }}">
+                    <a class="float-right allMessages" href="{{ url('home/chat') }}">
+                        <span>{{ count($user['getAuthUserUnreadMessages']) > 0 ? count($user['getAuthUserUnreadMessages']) : '' }}</span>
+                        <i class="fas fa-comment-alt fa-2x"></i>
+                    </a>
+
+                    <a class="float-right mr-3" href="{{ url('home/profile') }}">
                         <i class="fas fa-user-edit fa-2x"></i>
                     </a>
                 </div>
@@ -21,20 +27,29 @@
                         </div>
                     @endif
 
-                    <h5>
-                        <i class="fas fa-user"></i>
-                        <span class="ml-2">{{ $user->first_name }} {{ $user->last_name }}</span>
-                    </h5>
+                    <div class="row profileInfo">
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger('click')">Add Image</button>
+                            <input class="file-upload-input" type='file' accept="image/*" />
+                            <img class="file-upload-image" src="{{ $user->avatar == null ? asset('images/default-profile-picture.jpg') : asset('images/users/'.$user->avatar)  }}" alt="your image" />
+                        </div>
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <h6>
+                                <i class="fas fa-user"></i>
+                                <span class="ml-2">{{ $user->first_name }} {{ $user->last_name }}</span>
+                            </h6>
 
-                    <h5>
-                        <i class="fas fa-user-tie"></i>
-                        <span class="ml-2">{{ $user->user_name }}</span>
-                    </h5>
+                            <h6>
+                                <i class="fas fa-user-tie"></i>
+                                <span class="ml-2">{{ $user->user_name }}</span>
+                            </h6>
 
-                    <h5>
-                        <i class="fas fa-envelope"></i>
-                        <span class="ml-2">{{ $user->email }}</span>
-                    </h5>
+                            <h6>
+                                <i class="fas fa-envelope"></i>
+                                <span class="ml-2">{{ $user->email }}</span>
+                            </h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,3 +96,7 @@
     @endif
 </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/registration/registr.js') }}"></script>
+@endpush

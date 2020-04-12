@@ -1,3 +1,6 @@
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/news/news.css') }}">
+@endpush
 <div class="comment_block"
      data-routeName="{{ route('comments-news') }}"
      data-createCommentRouteName="{{ route('create-comment-news') }}"
