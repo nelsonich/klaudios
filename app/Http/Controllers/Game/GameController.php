@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Game;
 
 use App\Http\Controllers\Controller;
-use App\Models\Games\GameAnswer;
 use App\Models\Games\GameCategory;
 use App\Models\Games\GameComplexity;
 use App\Models\Games\RightAnswer;
@@ -21,18 +20,26 @@ class GameController extends Controller
     {
         $userId = Auth::id();
 
-        $newIdae = NewIdea::where('user_id', $userId)->first();
-        $newIdae->is_game = 1;
-        $newIdae->save();
+        $newIdea = NewIdea::query()
+            ->where('user_id', $userId)
+            ->first();
+
+        $newIdea->is_game = 1;
+        $newIdea->save();
+
         UserGameStar::create([
             "user_id" => $userId,
         ]);
+
         return response()->json('ok');
     }
 
     public function getGamesCategories(Request $request, $complexity_id)
     {
-        $complexity = GameComplexity::with('getGameCategories')->get();
+        $complexity = GameComplexity::query()
+            ->with('getGameCategories')
+            ->get();
+
         foreach ($complexity as $item) {
             $item->isSelected = false;
             if ($item->id == $complexity_id) {
@@ -54,25 +61,41 @@ class GameController extends Controller
             }
         }
 
-        return view('Games.welcome', ['complexity' => $complexity]);
+        return view('Games.welcome', [
+            'complexity' => $complexity
+        ]);
     }
 
     public function getGames(Request $request, $category_id)
     {
-        $games = GameCategory::where('id', $category_id)->with('getCategoryGames')->first();
+        $games = GameCategory::query()
+            ->where('id', $category_id)
+            ->with('getCategoryGames')
+            ->first();
 
-        return view('Games.games', ['games' => $games]);
+        return view('Games.games', [
+            'games' => $games
+        ]);
     }
 
     public function selectAnswer(Request $request)
     {
+        $userId = Auth::id();
         $answerId = $request->post('answerId');
         $gameId = $request->post('gameId');
-        $userId = Auth::id();
         $starCount = $request->post('starCount');
-        $isAnswerTrue = RightAnswer::where('game_id', $gameId)->where('answer_id', $answerId)->exists();
+
+        $isAnswerTrue = RightAnswer::query()
+            ->where('game_id', $gameId)
+            ->where('answer_id', $answerId)
+            ->exists();
+
         if ($isAnswerTrue) {
-            $isRightAnswer = UserRightAnswer::where('user_id', $userId)->where('game_id', $gameId)->exists();
+            $isRightAnswer = UserRightAnswer::query()
+                ->where('user_id', $userId)
+                ->where('game_id', $gameId)
+                ->exists();
+
             if (!$isRightAnswer) {
                 UserRightAnswer::create([
                     "user_id" => $userId,
@@ -80,12 +103,19 @@ class GameController extends Controller
                     "answer_id" => $answerId,
                 ]);
 
-                $stars = UserGameStar::where('user_id', $userId)->first();
-                $stars->stars+=$starCount;
+                $stars = UserGameStar::query()
+                    ->where('user_id', $userId)
+                    ->first();
+
+                $stars->stars += $starCount;
                 $stars->save();
             }
         } else {
-            $isWrongAnswer = UserWrongAnswer::where('user_id', $userId)->where('game_id', $gameId)->where('answer_id', $answerId)->exists();
+            $isWrongAnswer = UserWrongAnswer::query()
+                ->where('user_id', $userId)
+                ->where('game_id', $gameId)
+                ->where('answer_id', $answerId)
+                ->exists();
 
             if (!$isWrongAnswer) {
                 UserWrongAnswer::create([
@@ -95,6 +125,7 @@ class GameController extends Controller
                 ]);
             }
         }
+
         return response()->json($isAnswerTrue);
     }
 
@@ -111,6 +142,9 @@ class GameController extends Controller
         }
 
         $sortByStarsCount = collect($sortGamers)->sortBy('starsCount')->reverse()->toArray();
-        return view('Games.rating', ['sortByStarsCount' => $sortByStarsCount]);
+
+        return view('Games.rating', [
+            'sortByStarsCount' => $sortByStarsCount
+        ]);
     }
 }

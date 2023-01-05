@@ -8,24 +8,26 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-        "fideloper/proxy": "^4.0",
+        "php": "^8.0.2",
         "intervention/image": "^2.5",
-        "laravel/framework": "^6.2",
-        "laravel/tinker": "^2.0",
-        "orangehill/iseed": "^2.6",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.47",
+        "laravel/ui": "^4.0",
+        "laravel/tinker": "^2.7",
+        "orangehill/iseed": "^3.0.2",
         "paypal/rest-api-sdk-php": "^1.14",
-        "pusher/pusher-php-server": "^4.1",
+        "pusher/pusher-php-server": "^7.2.2",
         "srmklive/paypal": "^1.7",
-        "stevebauman/location": "^5.0"
+        "stevebauman/location": "^6.5.0"
     },
     "require-dev": {
-        "facade/ignition": "^1.4",
-        "fzaninotto/faker": "^1.4",
-        "laravel/ui": "^1.1",
-        "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.15",
+        "spatie/laravel-ignition": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,

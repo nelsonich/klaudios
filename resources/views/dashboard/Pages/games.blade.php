@@ -185,7 +185,7 @@
                 <tfoot>
                 <tr>
                     <td>
-                        {{ $games->links() }}
+                        {{ $games->links('pagination::bootstrap-5') }}
                     </td>
                 </tr>
                 </tfoot>

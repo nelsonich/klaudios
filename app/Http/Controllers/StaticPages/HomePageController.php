@@ -27,14 +27,24 @@ class HomePageController extends Controller
         $data = Location::get($ip);
         $countryName = "Armenia";
         if ($ip != '127.0.0.1') $countryName = $data->countryName;
-        Cookie::queue('countryName', $countryName, 24*60);
+        Cookie::queue('countryName', $countryName, 24 * 60);
 
         $lang = Session::get('locale');
 
-        if ($lang == null) $lang = 'en';
-        $about = About::where('lang', $lang)->first();
+        if ($lang == null) {
+            $lang = 'en';
+        }
+
+        $about = About::query()
+            ->where('lang', $lang)
+            ->first();
+
         $staticInformation = StaticInformation::first();
-        $features = Features::where('lang', $lang)->first();
+
+        $features = Features::query()
+            ->where('lang', $lang)
+            ->first();
+
         return view('welcome', [
             'about' => $about,
             'staticInformation' => $staticInformation,
@@ -53,9 +63,11 @@ class HomePageController extends Controller
 
         $data = $request->except('_token');
         RequestQuote::create($data);
+
         $data['messageQuote'] = $data['message'];
         $data['first_name'] = $data['firstName'];
         $data['last_name'] = $data['lastName'];
+
         unset($data['message']);
         unset($data['firstName']);
         unset($data['lastName']);
@@ -69,7 +81,7 @@ class HomePageController extends Controller
     {
         App::setLocale($locale);
         session()->put('locale', $locale);
-//        dd(app()->getLocale());
+
         return redirect()->back();
     }
 
@@ -77,8 +89,14 @@ class HomePageController extends Controller
     {
         $lang = Session::get('locale');
 
-        if ($lang == null) $lang = 'en';
-        $faq = Faq::where('lang', $lang)->get();
+        if ($lang == null) {
+            $lang = 'en';
+        }
+
+        $faq = Faq::query()
+            ->where('lang', $lang)
+            ->get();
+
         return view('sections.faq', [
             'faq' => $faq,
         ]);
@@ -88,8 +106,14 @@ class HomePageController extends Controller
     {
         $lang = Session::get('locale');
 
-        if ($lang == null) $lang = 'en';
-        $terms = TermsAndConditions::where('lang', $lang)->first();
+        if ($lang == null) {
+            $lang = 'en';
+        }
+
+        $terms = TermsAndConditions::query()
+            ->where('lang', $lang)
+            ->first();
+
         return view('sections.terms.terms', [
             'terms' => $terms,
         ]);
@@ -99,8 +123,14 @@ class HomePageController extends Controller
     {
         $lang = Session::get('locale');
 
-        if ($lang == null) $lang = 'en';
-        $privacy = PrivacyPolicy::where('lang', $lang)->first();
+        if ($lang == null) {
+            $lang = 'en';
+        };
+
+        $privacy = PrivacyPolicy::query()
+            ->where('lang', $lang)
+            ->first();
+
         return view('sections.terms.privacy', [
             'privacy' => $privacy,
         ]);
@@ -110,8 +140,14 @@ class HomePageController extends Controller
     {
         $lang = Session::get('locale');
 
-        if ($lang == null) $lang = 'en';
-        $cookie = CookiesPolicy::where('lang', $lang)->first();
+        if ($lang == null) {
+            $lang = 'en';
+        }
+
+        $cookie = CookiesPolicy::query()
+            ->where('lang', $lang)
+            ->first();
+
         return view('sections.terms.cookies', [
             'cookie' => $cookie,
         ]);

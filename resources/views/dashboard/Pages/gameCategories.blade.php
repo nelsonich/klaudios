@@ -114,7 +114,7 @@
                 <tfoot>
                 <tr>
                     <td>
-                        {{ $categories->links() }}
+                        {{ $categories->links('pagination::bootstrap-5') }}
                     </td>
                 </tr>
                 </tfoot>

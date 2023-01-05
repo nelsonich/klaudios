@@ -29,8 +29,13 @@ class DashboardController extends Controller
     public static function index()
     {
         $user = Auth::user();
-        $users = User::where('role', "!=", 'superadmin')->orderBy('id', 'desc')->paginate(5);
         $roles = UserRole::all();
+
+        $users = User::query()
+            ->where('role', "!=", 'superadmin')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
         return view('dashboard.home', [
             'user' => $user,
             'users' => $users,
@@ -51,7 +56,10 @@ class DashboardController extends Controller
 
     public static function getNews()
     {
-        $news = News::orderBy('id', 'desc')->paginate(5);
+        $news = News::query()
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
         return view('dashboard.Pages.news', [
             'news' => $news,
         ]);
@@ -70,7 +78,6 @@ class DashboardController extends Controller
             $destinationPath = 'images/news/'; // upload path
             $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profilefile);
-
         } else {
             $profilefile = 'news.png';
         }
@@ -96,7 +103,6 @@ class DashboardController extends Controller
             $destinationPath = 'images/news/'; // upload path
             $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profilefile);
-
         } else {
             $profilefile = $request->post('newsoldimage');
         }
@@ -113,14 +119,18 @@ class DashboardController extends Controller
     {
         $data = $request->except('_token');
         News::destroy($data['id']);
+
         $request->session()->flash('status', 'delete');
         return redirect()->back();
     }
 
     public function getAbout()
     {
-        $abouts = About::all();
-        return view('dashboard.Pages.StaticPages.about', ['abouts' => $abouts]);
+        $about = About::all();
+
+        return view('dashboard.Pages.StaticPages.about', [
+            'abouts' => $about
+        ]);
     }
 
     public function editAbout(Request $request, $lang)
@@ -131,18 +141,18 @@ class DashboardController extends Controller
             'description' => 'required',
         ]);
 
-//        if($request->hasFile('image')) {
-//            $files = $request->file('image');
-//            $destinationPath = 'images/'; // upload path
-//            $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
-//            $files->move($destinationPath, $profilefile);
-//
-//        } else {
-//            $profilefile = 'about.png';
-//        }
+        // if($request->hasFile('image')) {
+        //     $files = $request->file('image');
+        //     $destinationPath = 'images/'; // upload path
+        //     $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
+        //     $files->move($destinationPath, $profilefile);
+        //
+        // } else {
+        //     $profilefile = 'about.png';
+        // }
 
         $data = $request->except('_token');
-//        $data['image'] = $profilefile;
+        // $data['image'] = $profilefile;
         About::where('lang', $lang)->update($data);
 
         $request->session()->flash('status', 'edit');
@@ -152,7 +162,10 @@ class DashboardController extends Controller
     public function getStaticInfo()
     {
         $staticInfo = StaticInformation::first();
-        return view('dashboard.Pages.StaticPages.staticInformation', ['staticInfo' => $staticInfo]);
+
+        return view('dashboard.Pages.StaticPages.staticInformation', [
+            'staticInfo' => $staticInfo
+        ]);
     }
 
     public function editStaticInformation(Request $request)
@@ -172,7 +185,6 @@ class DashboardController extends Controller
             $destinationPath = 'images/'; // upload path
             $profilefile = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profilefile);
-
         } else {
             $profilefile = 'klaudios.png';
         }
@@ -188,13 +200,19 @@ class DashboardController extends Controller
     public function getRequestQuote()
     {
         $requestQuotes = RequestQuote::paginate(10);
-        return view('dashboard.Pages.requestQuote', ['requestQuotes' => $requestQuotes]);
+
+        return view('dashboard.Pages.requestQuote', [
+            'requestQuotes' => $requestQuotes
+        ]);
     }
 
     public function getFeatures()
     {
         $features = Features::all();
-        return view('dashboard.Pages.StaticPages.features', ['features' => $features]);
+
+        return view('dashboard.Pages.StaticPages.features', [
+            'features' => $features
+        ]);
     }
 
     public function editFeatures(Request $request, $lang)
@@ -209,35 +227,49 @@ class DashboardController extends Controller
     public function getLanguages()
     {
         $languages = Languages::all();
-        return view('dashboard.Pages.languages', ['languages' => $languages]);
+
+        return view('dashboard.Pages.languages', [
+            'languages' => $languages
+        ]);
     }
 
     public function editLangStatus(Request $request)
     {
         $langId = $request->post('langId');
         $lang = Languages::find($langId);
-        $staus = $lang->status == 1 ? 0 : 1;
-        $lang->status = $staus;
+
+        $status = $lang->status == 1 ? 0 : 1;
+        $lang->status = $status;
         $lang->save();
+
         return response()->json('ok');
     }
 
     public function getFaq()
     {
-        $faq = Faq::where('lang', 'en')->paginate(5);
-        return view('dashboard.Pages.StaticPages.faq', ['faq' => $faq]);
+        $faq = Faq::query()
+            ->where('lang', 'en')
+            ->paginate(5);
+
+        return view('dashboard.Pages.StaticPages.faq', [
+            'faq' => $faq
+        ]);
     }
 
     public function getTerms()
     {
         $terms = TermsAndConditions::all();
-        return view('dashboard.Pages.terms.terms', ['terms' => $terms]);
+
+        return view('dashboard.Pages.terms.terms', [
+            'terms' => $terms
+        ]);
     }
 
     public function editTerms(Request $request)
     {
         $data = $request->except('_token');
         TermsAndConditions::find($data['id'])->update($data);
+
         $request->session()->flash('status', 'edit');
         return redirect()->back();
     }
@@ -245,13 +277,17 @@ class DashboardController extends Controller
     public function getPrivacy()
     {
         $privacy = PrivacyPolicy::all();
-        return view('dashboard.Pages.terms.privacy', ['privacy' => $privacy]);
+
+        return view('dashboard.Pages.terms.privacy', [
+            'privacy' => $privacy
+        ]);
     }
 
     public function editPrivacy(Request $request)
     {
         $data = $request->except('_token');
         PrivacyPolicy::find($data['id'])->update($data);
+
         $request->session()->flash('status', 'edit');
         return redirect()->back();
     }
@@ -259,13 +295,17 @@ class DashboardController extends Controller
     public function getCookies()
     {
         $cookies = CookiesPolicy::all();
-        return view('dashboard.Pages.terms.cookies', ['cookies' => $cookies]);
+
+        return view('dashboard.Pages.terms.cookies', [
+            'cookies' => $cookies
+        ]);
     }
 
     public function editCookies(Request $request)
     {
         $data = $request->except('_token');
         CookiesPolicy::find($data['id'])->update($data);
+
         $request->session()->flash('status', 'edit');
         return redirect()->back();
     }
@@ -294,7 +334,6 @@ class DashboardController extends Controller
             $destinationPath = 'images/Games/games/'; // upload path
             $image = date('YmdHis') . "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $image);
-
         } else {
             $image = null;
         }
@@ -312,6 +351,7 @@ class DashboardController extends Controller
         $images = array();
         $data = $request->except('_token');
         $gameId = $data['id'];
+
         if ($files = $request->file('image')) {
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
@@ -327,14 +367,14 @@ class DashboardController extends Controller
                     "game_id" => $gameId,
                 ]);
             }
-        } elseif(!empty($images) && empty($data['answer'])) {
+        } elseif (!empty($images) && empty($data['answer'])) {
             foreach ($images as $item) {
                 GameAnswer::create([
                     "image" => $item,
                     "game_id" => $gameId,
                 ]);
             }
-        } elseif(empty($images) && !empty($data['answer'])) {
+        } elseif (empty($images) && !empty($data['answer'])) {
             foreach ($data['answer'] as $item) {
                 GameAnswer::create([
                     "answer" => $item,
@@ -351,18 +391,24 @@ class DashboardController extends Controller
         $gameId = $request->post('gameId');
         $answerId = $request->post('answerId');
         $isExists = RightAnswer::where('game_id', $gameId)->exists();
-        UserRightAnswer::where('game_id', $gameId)->update([
-            "answer_id" => $answerId,
-        ]);
+
+        UserRightAnswer::query()
+            ->where('game_id', $gameId)
+            ->update([
+                "answer_id" => $answerId,
+            ]);
+
         if (!$isExists) {
             RightAnswer::create([
                 "game_id" => $gameId,
                 "answer_id" => $answerId
             ]);
         } else {
-            RightAnswer::where('game_id', $gameId)->update([
-                "answer_id" => $answerId,
-            ]);
+            RightAnswer::query()
+                ->where('game_id', $gameId)
+                ->update([
+                    "answer_id" => $answerId,
+                ]);
         }
 
         return response()->json('ok');
@@ -370,9 +416,12 @@ class DashboardController extends Controller
 
     public function getGameCategory()
     {
-        $categories = GameCategory::with('getCategoryComplexity')->paginate(10);
+        $categories = GameCategory::query()
+            ->with('getCategoryComplexity')
+            ->paginate(10);
 
         $complexities = GameComplexity::all();
+
         return view('dashboard.Pages.gameCategories', [
             'categories' => $categories,
             'complexities' => $complexities,
@@ -435,16 +484,21 @@ class DashboardController extends Controller
     public function editGameCategoryStatus(Request $request)
     {
         $catId = $request->post('catId');
+
         $cat = GameCategory::find($catId);
-        $staus = $cat->status == 1 ? 0 : 1;
-        $cat->status = $staus;
+        $status = $cat->status == 1 ? 0 : 1;
+        $cat->status = $status;
         $cat->save();
+
         return response()->json('ok');
     }
 
     public function getChangedGames()
     {
-        $games = Game::with('getGameAnswers', 'getGameRightAnswer')->paginate(10);
+        $games = Game::query()
+            ->with('getGameAnswers', 'getGameRightAnswer')
+            ->paginate(10);
+
         return view('dashboard.Pages.changedGames', [
             "games" => $games
         ]);

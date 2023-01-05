@@ -48,7 +48,8 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
+            $this->credentials($request),
+            $request->filled('remember')
         );
     }
 
@@ -61,9 +62,8 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if($user->role == "superadmin") {
+        if ($user->role == "superadmin") {
             $this->redirectTo = RouteServiceProvider::DASHBOARD;
-            
         }
 
         return redirect($this->redirectTo);
@@ -80,16 +80,12 @@ class LoginController extends Controller
             $credentials['email'] = $request->email;
         }
 
-        // dd($this->guaa);
-
         if ($this->attemptLogin($request)) {
-
-            // dd($this->sendLoginResponse($request));
             return $this->sendLoginResponse($request);
         }
+
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
-
     }
 }

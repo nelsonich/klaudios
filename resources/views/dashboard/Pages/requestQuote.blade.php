@@ -28,7 +28,7 @@
                 <tfoot>
                     <tr>
                         <th scope="row" colspan="5" class="justify-content-end">
-                            {{ $requestQuotes->links() }}
+                            {{ $requestQuotes->links('pagination::bootstrap-5') }}
                         </th>
                     </tr>
                 </tfoot>

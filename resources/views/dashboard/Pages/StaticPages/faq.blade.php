@@ -140,7 +140,7 @@
                 <tfoot>
                 <tr>
                     <td>
-                        {{ $faq->links() }}
+                        {{ $faq->links('pagination::bootstrap-5') }}
                     </td>
                 </tr>
                 </tfoot>
