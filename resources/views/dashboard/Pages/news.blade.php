@@ -158,7 +158,7 @@
                 <tfoot>
                     <tr>
                         <td>
-                            {{ $news->links('pagination::bootstrap-4') }}
+                            {{ $news->links('pagination::bootstrap-5') }}
                         </td>
                     </tr>
                 </tfoot>
